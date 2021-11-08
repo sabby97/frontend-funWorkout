@@ -1,0 +1,30 @@
+
+
+<div class="form-group row">
+    <label for="userInput" class="col-sm-4 col-form-label">Username</label>
+    <div class="col-sm-4">
+        <input type="text" class="form-control" id="userInput" [(ngModel)]="username">
+    </div>
+</div>
+<div class="form-group row">
+    <label for="passwordInput" class="col-sm-4 col-form-label">Password</label>
+    <div class="col-sm-4">
+        <input type="password" class="form-control" id="passwordInput" [(ngModel)]="password">
+    </div>
+</div>
+<button type="button" class="btn btn-primary" (click)="signIn()">Sign In</button>
+
+
+<div>
+    <label for="userNameInput">Enter User Name</label>
+    <input type="text" name="userNameInput" id="userNameInput">
+    <label for="passwordInput">Enter Password</label>
+    <input type="text" name="passwordInput" id="passwordInput">
+
+    <button>Sign In</button>
+    <button>Sign Out</button>
+</div>
+
+
+
+
