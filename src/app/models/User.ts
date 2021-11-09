@@ -4,8 +4,9 @@ export class User {
     userName: string;
     password: string;
     isAdmin: boolean;
+    
 
-    constructor(userName: string = "", password: string = "", isAdmin: boolean, userId?: number) {
+    constructor(userName: string = "", password: string = "", isAdmin?: boolean, userId?: number) {
         this.userId = userId;
         this.userName = userName;
         this.password = password;
