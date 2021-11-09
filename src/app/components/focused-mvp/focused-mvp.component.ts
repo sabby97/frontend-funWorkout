@@ -1,0 +1,255 @@
+import { Target } from '@angular/compiler';
+import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/User';
+import { ExerciseTarget } from 'src/app/models/ExerciseTarget';
+import { workoutPlan } from "src/app/models/workoutPlan";
+import { Exercise } from "src/app/models/Exercise";
+
+@Component({
+  selector: 'app-focused-mvp',
+  templateUrl: './focused-mvp.component.html',
+  styleUrls: ['./focused-mvp.component.css']
+})
+export class FocusedMvpComponent implements OnInit {
+  title = 'funWorkoutFrontend';
+          // description= [{Exercisea.exerciseDescription}];
+
+  description='this will be the area for the workout something here';
+  workout='Exercise name';
+  ExerciseName='place holder'
+  globalNUM:number=0;
+  Areatarget="placeholder";
+
+  user:User={
+            userId: 1,
+            userName: "anthony",
+            password: "one",
+            isAdmin: true
+  };
+  target:ExerciseTarget={
+              exerciseTargetId: 1,
+            exerciseTargetName: "arms two"
+  };
+  
+  workoutPlan:workoutPlan =
+        {
+          workoutplanId: 1,
+          workoutName:"arm bench press",
+          workoutlikes:35,
+          user:this.user,
+          isRecommended:true
+  };
+  
+  Exercise:Exercise={
+    exerciseId: 1,
+    exerciseName: "bench press 100lb",
+    exerciseDescription: "this is the arm workout description that has been created in the focus mvp section:) this was torture to intalize in typescript ",
+    exerciseTarget:this.target
+  }
+// ///
+// //ARRAY CREATIN 
+  ExerciseList:Exercise[]=[
+    {
+      exerciseId: 1,
+      exerciseName: "bench press 10lb",
+      exerciseDescription: "this is the bench press 10lb workout description that has been created in the focus mvp section:) this was torture to intalize in typescript ",
+      exerciseTarget:this.target
+    },
+  {
+    exerciseId: 2,
+    exerciseName: "bench press 200lb",
+    exerciseDescription: "this is the bench press 200lb workout description that has been created in the focus mvp section:) this was torture to intalize in typescript ",
+    exerciseTarget:this.target
+  },
+  {
+    exerciseId: 3,
+    exerciseName: "bench press 30lb",
+    exerciseDescription: "this is the bench press 30lb workout description that has been created in the focus mvp section:) this was torture to intalize in typescript ",
+    exerciseTarget:this.target
+  },
+  {
+    exerciseId: 4,
+    exerciseName: "bench press 4lb",
+    exerciseDescription: "this is the bench press 30lb workout description that has been created in the focus mvp section:) this was torture to intalize in typescript ",
+    exerciseTarget:this.target
+  },
+  {
+    exerciseId: 5,
+    exerciseName: "bench press 500-0lb",
+    exerciseDescription: "this is the bench press 500-0lb workout description that has been created in the focus mvp section:) this was torture to intalize in typescript ",
+    exerciseTarget:this.target
+  }
+];
+userList:User[]=[{
+            userId: 2,
+            userName: "simion",
+            password: "one",
+            isAdmin: false
+},
+{ 
+            userId: 3,
+            userName: "batman",
+            password: "one",
+            isAdmin: true
+}
+];
+targetList:ExerciseTarget[]=[
+  {
+      exerciseTargetId: 1,
+      exerciseTargetName: "TARGET arms ONE"
+  },
+  {
+    exerciseTargetId: 2,
+    exerciseTargetName: "TARGET arms TWO"
+  },
+  {
+    exerciseTargetId: 3,
+    exerciseTargetName: " TARGET arms THREE"
+  },
+  {
+    exerciseTargetId: 4,
+    exerciseTargetName: "TARGET arms FOUR"
+  },
+  {
+    exerciseTargetId: 5,
+    exerciseTargetName: " TARGET arms FIVE"
+  }
+
+]
+
+workoutPlanList:workoutPlan[]=[
+  {
+    workoutplanId: 2,
+    workoutName:"leg bench press",
+    workoutlikes:35,
+    user:this.user,
+    isRecommended:true},
+  {
+    workoutplanId: 3,
+    workoutName:"sholders bench press",
+    workoutlikes:35,
+    user:this.user,
+    isRecommended:false}
+  ];
+
+
+///
+
+
+  // count:number;
+  constructor(){}
+  // constructor(ExerciseList:Exercise,) { 
+  //   this.Exercise=ExerciseList;
+  // }
+
+  ngOnInit(): void {
+    // this.description=
+    console.log(this.user.userName);
+    // console.log(this.ExerciseList); 
+    
+  }
+
+  liked():void{
+    console.log("the like function was called");
+
+    let count:number=0;
+    count+=1;
+    console.log("this is the count "+ count);
+    this.workoutPlanList[1].workoutlikes+=1;
+    console.log(this.workoutPlanList[1].workoutlikes);
+    
+
+
+
+  }
+
+
+
+  
+  hate():void{
+    console.log("the hate button was clicked ");
+  }
+
+
+
+  randomGen():void{
+    console.log("the random gen was clicked");
+    // console.log(this.test);
+    //this code below is used to create a ran
+    let random:number;
+    random=Math.floor(Math. random() *4) + 1
+    this.globalNUM=random;
+    
+    console.log(random+":random value");
+    // alert("the value for gloabl num is "+this.globalNUM );  
+
+    this.setAll(random);  
+
+  }
+
+
+//test is update button
+  test():void
+  {
+
+          const usera=
+          {
+            userId: 1,
+            userName: "one",
+            password: "one",
+            isAdmin: true
+          }
+          const targeta={
+            exerciseTargetId: 1,
+            exerciseTargetName: "arms two",
+  
+          }
+        const workoutPlana =
+        {
+          workoutplanId: 1,
+          workoutName:"arms",
+          workoutlikes:35,
+          user:usera,
+          isRecommended:true
+        }
+        const Exercisea={
+          exerciseId: 1,
+          exerciseName: "arms",
+          exerciseDescription: "this is teh arm",
+          exerciseTarget:targeta
+        }
+        const allAttri={
+          usera,targeta,workoutPlana,Exercisea
+        }
+        // description= {{Exercisea.exerciseDescription}};
+        // workout=workoutPlana.workoutName;
+
+        // end of test ()
+        console.log( usera );
+        console.log( targeta );
+        console.log( workoutPlana );
+        console.log( Exercisea );
+        console.log("this is all atributes below" );
+        console.log(allAttri);
+  }
+
+
+
+  setAll(random:number):void{
+    console.log("this set all functon was called");
+    console.log("passed in value is "+random);
+    let index:number=random;
+
+    // alert(this.ExerciseList[1]);
+    console.log(this.ExerciseList[(index)]);
+    this.Exercise.exerciseDescription=this.ExerciseList[(index)].exerciseDescription;
+    this.ExerciseName=this.ExerciseList[(index)].exerciseName;
+    // this.Areatarget=this.ExerciseList[(index)].exerciseTarget;
+    // this.Areatarget  =this.ExerciseList[(index)].exerciseTarget.exerciseTargetName;
+    this.Areatarget=this.targetList[(index)].exerciseTargetName;
+
+    console.log("end of all setter");
+  }
+ 
+
+}
