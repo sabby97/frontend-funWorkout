@@ -19,16 +19,16 @@ export class SignInService {
      
         let httpResponse = await fetch(`http://localhost:8080/users/find?userName=${username}&password=${password}`);
       
-        let currentUser = await httpResponse.json();
-        console.log(currentUser);
+        this.currentUser = await httpResponse.json();
+        console.log(this.currentUser);
         
-        localStorage.setItem('userId', currentUser.userId);
-        localStorage.setItem('userName', currentUser.userName);
-        localStorage.setItem('password', currentUser.password);
-        localStorage.setItem('admin', currentUser.admin);
+        // localStorage.setItem('userId', this.currentUser.userId);
+         localStorage.setItem('userName', this.currentUser.userName);
+         localStorage.setItem('password', this.currentUser.password);
+         //localStorage.setItem('admin', this.currentUser.isAdmin);
         
 
-        return currentUser;
+        return this.currentUser;
     }
 
     signOut() {
