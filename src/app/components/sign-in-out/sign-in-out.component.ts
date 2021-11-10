@@ -1,3 +1,4 @@
+import { LocalizedString } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/User';
 import { SignInService } from 'src/app/services/sign-in-service';
@@ -16,16 +17,27 @@ export class SignInOutComponent implements OnInit {
 
   username: string;
   password: string;
+  signedOutToggle: boolean = true;
+  currentUser: User = null;
 
-  signIn() {
+  async signIn() {
   
-    const currentUser = this.signInService.signIn(this.username, this.password);
-    this.username = "";
-    this.password = "";
+    this.currentUser = await this.signInService.signIn(this.username, this.password);
+    // console.log(this.currentUser);
+
+    if (this.currentUser.userId !== 0) {
+      this.signedOutToggle = false;
+      this.username = "";
+      this.password = "";
+    } else {
+      alert("There is no user with these credentials.  Please try again.");
+      this.signOut();
+    }
   }
 
   signOut() {
       this.signInService.signOut();
+      this.signedOutToggle = true;
   }
 
 }
