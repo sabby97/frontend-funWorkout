@@ -18,12 +18,12 @@ export class SignInOutComponent implements OnInit {
   username: string;
   password: string;
   signedOutToggle: boolean = true;
-  currentUser: User = null;
+  currentUser: User;
 
   async signIn() {
   
     this.currentUser = await this.signInService.signIn(this.username, this.password);
-    // console.log(this.currentUser);
+    console.log(this.currentUser);
 
     if (this.currentUser.userId !== 0) {
       this.signedOutToggle = false;
