@@ -14,7 +14,7 @@ export class SignInService {
     currentUser: User;
     // private postHeaders = new HttpHeaders({ 'Context-Type': 'application/json' });
 
-    async signIn(username: string, password: string): Promise<User>  {
+    async signIn(username: string, password: string):Promise<User> {
         
      
         let httpResponse = await fetch(`http://localhost:8080/users/find?userName=${username}&password=${password}`);
@@ -26,7 +26,8 @@ export class SignInService {
         localStorage.setItem('userName', currentUser.userName);
         localStorage.setItem('password', currentUser.password);
         localStorage.setItem('admin', currentUser.admin);
-      
+        
+
         return currentUser;
     }
 
