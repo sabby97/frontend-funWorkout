@@ -3,6 +3,10 @@
 
     
     <main class="container">
+      <!-- <table>
+        <tr>one top</tr>
+        <tb>this isbody </tb>
+      </table> -->
       <div class="bg-light p-5 rounded">
          
                   <!-- <h3>{{workout}}</h3> -->
@@ -20,11 +24,76 @@
                     <button (click)="test()">update</button>
                     <p>target Area:{{Areatarget}}</p>
 
+
+            <br>
+                    <!--  -->
+                    <div >
+                      <h3>Exercise Name:{{ExerciseName}}</h3>
+             
+                    
+                      <h3>user name:{{user.userName}}</h3>
+                      <h5>workout description </h5>
+                      <!-- <p>{{description}}</p> -->
+                      <p>{{Exercise.exerciseDescription}}</p>
+    
+                      <button (click)="liked()">like</button>
+                        <button (click)="hate()">hate</button>
+                        <button (click)="randomGen()">Random </button>
+                        <button (click)="test()">update</button>
+                        <p>target Area:{{Areatarget}}</p>
+<h1>this is the list </h1>
+                        <a *ngFor="let exercise of ExerciseList">
+                         
+
+                          
+                          <h3>Exercise Name:{{exercise.exerciseName}}</h3>
+                          <h5>workout description </h5>
+                          <h4>Exercise id:{{exercise.exerciseId}}</h4>
+                      <!-- <p>{{description}}</p> -->
+                      <p>{{exercise.exerciseDescription}}</p>
+                    <br>
+                    <br>
+                        <p>{{exercise.exerciseTarget.exerciseTargetName}}</p>
+                      <!-- <button (click)="liked()">like{{exercise}}</button>
+                        <button (click)="hate()">hate</button>
+                        <button (click)="randomGen()">Random </button>
+                        <button (click)="test()">update</button> -->
+                        <!-- <p>target Area:{{exercise.target}}</p> -->
+                        </a>
+
+
+                      <!-- this is the table  -->
+                      <!-- <table> -->
+                        <!-- <tr>
+                          <th>exercise name   </th>
+                          <th>workout description  </th>
+                          <th>button  </th>
+                      </tr>
+                      <tr> -->
+                      <!-- <tr *ngFor="let lap of laps"> -->
+                        <!-- <td>{{ExerciseName}}</td>
+                        <td>{{Exercise.exerciseDescription}}</td>
+                        <td>{{ Areatarget}}</td>
+                    </tr>
+                 -->
+                  
+                      <!-- </table> -->
+                    </div>
+                    <!--  -->
+                    <br>
+                    <br>
+                    <button (click)="liked()">like</button>
+                    <button (click)="hate()">hate</button>
+                    <button (click)="randomGen()">Random </button>
+                    <button (click)="test()">update</button>
                     <footer>
                       <h2>FOTTER END</h2>
                     </footer>
               
-</div>
+      </div>
+     
+
+     
 <!-- outside of padding -->
 </main>
 <!-- outside of scope -->
