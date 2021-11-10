@@ -251,5 +251,7 @@ workoutPlanList:workoutPlan[]=[
     console.log("end of all setter");
   }
  
+  setAllList():void
+  {}
 
 }
