@@ -7,12 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignInOutComponent } from './components/sign-in-out/sign-in-out.component';
 import { WorkoutPlanDisplayComponent } from './components/workout-plan-display/workout-plan-display.component';
+import { RandomWorkoutComponent } from './components/random-workout/random-workout.component';
+import { CustomWorkoutComponent } from './components/custom-workout/custom-workout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInOutComponent,
-    WorkoutPlanDisplayComponent
+    WorkoutPlanDisplayComponent,
+    RandomWorkoutComponent,
+    CustomWorkoutComponent
   ],
   imports: [
     BrowserModule,
