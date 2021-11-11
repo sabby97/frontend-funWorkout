@@ -9,6 +9,8 @@ import { SignInOutComponent } from './components/sign-in-out/sign-in-out.compone
 import { WorkoutPlanDisplayComponent } from './components/workout-plan-display/workout-plan-display.component';
 import { RandomWorkoutComponent } from './components/random-workout/random-workout.component';
 import { CustomWorkoutComponent } from './components/custom-workout/custom-workout.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { CustomWorkoutComponent } from './components/custom-workout/custom-worko
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTableModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

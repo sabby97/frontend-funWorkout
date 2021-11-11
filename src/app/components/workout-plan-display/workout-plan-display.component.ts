@@ -4,7 +4,7 @@ import { SignInService } from 'src/app/services/sign-in-service';
 import { WorkoutService } from 'src/app/services/workout-service';
 import { Observable } from 'rxjs';
 import { FocusedMVP } from 'src/app/models/focusedMVP';
-import { WorkoutPlan } from 'src/app/models/WorkoutPlan';
+import { WorkoutPlan } from 'src/app/models/workoutPlan';
 
 @Component({
   selector: 'app-workout-plan-display',
@@ -35,18 +35,35 @@ export class WorkoutPlanDisplayComponent implements OnInit {
 
    userId: number = 1;
    
+   workoutList: FocusedMVP[];
+   //  Find a better way(it gets userName from getworkoutsByUser())
+   userName: string;
   
-
   ngOnInit(): void {
     this.getWorkoutsByUser();
   }
 
 
   //Still hardcoded for user 1!
-  getWorkoutsByUser() {
+  // getWorkoutsByUser() {
     
-    this.workoutService.getWorkoutsByUserUpdated(1);
-    console.log(this.workoutPlanList);
+  //   this.workoutService.getWorkoutsByUserUpdated(1);
+  //   console.log(this.workoutPlanList);
+  
+
+   getWorkoutsByUser() {
+    
+    if(localStorage.getItem('userId')) {
+       this.userName = localStorage.getItem('userName');
+       
+       this.workoutService.getWorkoutsByUser(localStorage.getItem('userId') as unknown as number);
+       
+       console.log(this.workoutList);
+       console.log(typeof(this.workoutList));
+       
+    } else {
+      alert('You must be signed in to get saved workouts');
+    }
 
   }
 

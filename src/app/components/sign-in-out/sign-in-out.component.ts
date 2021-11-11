@@ -1,4 +1,3 @@
-import { LocalizedString } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/User';
 import { SignInService } from 'src/app/services/sign-in-service';

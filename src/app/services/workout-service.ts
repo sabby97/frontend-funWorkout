@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
 import { FocusedMVP } from "../models/focusedMVP";
 
-import { WorkoutPlan } from "../models/WorkoutPlan";
+import { WorkoutPlan } from "../models/workoutPlan";
 import { User } from "../models/User";
 import { Exercise } from "../models/Exercise";
 import { ExerciseTarget } from "../models/ExerciseTarget";
@@ -37,7 +37,7 @@ export class WorkoutService {
     // `http://localhost:8080/users/${userId}/workouts`
     getWorkoutsByUser(userId : number){
        
-          this.http.get<FocusedMVP[]>(`http://localhost:8080/users/${userId}/workouts`).subscribe(
+        return  this.http.get<FocusedMVP[]>(`http://localhost:8080/users/${userId}/workouts`).subscribe(
               (response)=>{
                 //   focusedMvp = new FocusedMVP();
                   this.workoutList = response;
