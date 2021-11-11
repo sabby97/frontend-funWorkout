@@ -6,17 +6,18 @@
         <th>Creator</th>
         <th>Price</th>
         <th>Likes</th>
-        <th>Recomended</th>
+        <th ></th>
     </tr>
-    <!-- <tr *ngFor="let workoutPlan of workoutPlanList"> -->
-    <tr>
-        <td>this is </td>
-        <td>just</td>
+    
+    <tr *ngFor="let workout of workoutList">
+        <td>something   {{workout.workoutName}}</td>
+        <td>just {{workout.workoutPlanId}}</td>
         <td style="text-align: right;">here</td>
         <td>so </td>
         <td>you see</td>
     </tr>
 </table>
 
+<button (click)="getWorkoutsByUser()">Click Me</button>
 
-
+<!-- **ngFor="let workout of workoutList" {{workout.workoutId}}-->
