@@ -2,7 +2,7 @@ import { Target } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/User';
 import { ExerciseTarget } from 'src/app/models/ExerciseTarget';
-import { workoutPlan } from "src/app/models/workoutPlan";
+import { workoutPlan } from "src/app/models/WorkoutPlan";
 import { Exercise } from "src/app/models/Exercise";
 
 @Component({

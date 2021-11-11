@@ -12,26 +12,22 @@
 <table>
     <tr>
         <th>Workout Name</th>
-        <th>Creator</th>
+        <th>Number of Exercises</th>
         <th>Likes</th>
         <th>Recommended</th>
         
     </tr>
 
     <tr *ngFor="let workout of workoutPlanList; index as i">
-        <td> {{workout.workoutName}}</td>
-        <!-- Placeholder, replace with a better looking button -->
-        <td> <button (click)="selectWorkoutFromList(i)"> {{workout.workoutplanId}} </button></td>
-        <td style="text-align: right;">here</td>
-        <td>so </td>
-        <td>you see</td>
+        <td style="text-align: center;"> <button (click)="selectWorkoutFromList(i)">  {{workout.workoutName}}</button></td>
+        <td style="text-align: center;">{{workout.exerciseList.length}}</td>
+        <td style="text-align: center;">likes </td>
+        <td style="text-align: center;">is recommended?</td>
     </tr>
     
 </table>
 
-
-
-<button (click)="getWorkoutsByUser()">Click Me</button>
+<br>
 
 
 

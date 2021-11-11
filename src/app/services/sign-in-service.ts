@@ -26,7 +26,7 @@ export class SignInService {
          localStorage.setItem('userId', this.currentUser.userId as unknown as string);
          localStorage.setItem('userName', this.currentUser.userName);
          localStorage.setItem('password', this.currentUser.password);
-         //localStorage.setItem('admin', this.currentUser.isAdmin);
+         localStorage.setItem('admin', this.currentUser.isAdmin as unknown as string);
         
         return this.currentUser;
     }

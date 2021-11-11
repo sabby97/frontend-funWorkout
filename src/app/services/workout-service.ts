@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, Subject } from "rxjs";
-import { FocusedMVP } from "../models/focusedMVP";
+import { Subject } from "rxjs";
 
-import { WorkoutPlan } from "../models/workoutPlan";
+import { WorkoutPlan } from "../models/WorkoutPlan";
 import { User } from "../models/User";
 import { Exercise } from "../models/Exercise";
 import { ExerciseTarget } from "../models/ExerciseTarget";
@@ -16,12 +15,7 @@ export class WorkoutService {
 
     constructor(private http: HttpClient) {}
     
-    //Delete these four once the WorkoutPlan model is fully implemented in place of focuedMVP
-    currentWorkout: FocusedMVP;
-    workoutList: FocusedMVP[] = [];
-    notifyFocusedWorkout: Subject<FocusedMVP> = new Subject<FocusedMVP>();
-    notifyOfWorkoutList: Subject<FocusedMVP[]> = new Subject<FocusedMVP[]>();
-
+    
     //The WorkoutPlan that is (should be!) currently displayed in the workout focus.
     currentWorkoutPlan: WorkoutPlan;
     //The array of WorkoutPlans that is currently displayed in the workout-plan-display component.
@@ -35,19 +29,19 @@ export class WorkoutService {
 
     // we need to make call a to the backend to grab a list of workouts by user to this endpoint:
     // `http://localhost:8080/users/${userId}/workouts`
-    getWorkoutsByUser(userId : number){
+    // getWorkoutsByUser(userId : number){
        
-        return  this.http.get<FocusedMVP[]>(`http://localhost:8080/users/${userId}/workouts`).subscribe(
-              (response)=>{
-                //   focusedMvp = new FocusedMVP();
-                  this.workoutList = response;
-                  this.notifyOfWorkoutList.next(this.workoutList);
-              }
-          )
+    //     return  this.http.get<FocusedMVP[]>(`http://localhost:8080/users/${userId}/workouts`).subscribe(
+    //           (response)=>{
+    //             //   focusedMvp = new FocusedMVP();
+    //               this.workoutList = response;
+    //               this.notifyOfWorkoutList.next(this.workoutList);
+    //           }
+    //       )
 
-    }
+    // }
 
-    getWorkoutsByUserUpdated(userId : number){
+    getWorkoutsByUser(userId: string){
 
         this.http.get<WorkoutPlan[]>(`http://localhost:8080/users/${userId}/workouts`).subscribe(
             (response)=>{

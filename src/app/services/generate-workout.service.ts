@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { FocusedMVP } from '../models/focusedMVP';
+import { FocusedMVP } from '../models/FocusedMVP';
 
 @Injectable({
   providedIn: 'root'
