@@ -8,16 +8,33 @@
         <th>Likes</th>
         <th ></th>
     </tr>
-    
-    <tr *ngFor="let workout of workoutList">
-        <td>something   {{workout.workoutName}}</td>
-        <td>just {{workout.workoutPlanId}}</td>
+
+    <tr *ngFor="let workout of workoutPlanList; index as i">
+        <td> {{workout.workoutName}}</td>
+        <!-- Placeholder, replace with a better looking button -->
+        <td> <button (click)="selectWorkoutFromList(i)"> {{workout.workoutplanId}} </button></td>
         <td style="text-align: right;">here</td>
         <td>so </td>
         <td>you see</td>
     </tr>
+    
 </table>
 
+
+
 <button (click)="getWorkoutsByUser()">Click Me</button>
+
+
+
+<!-- This should be displayed in the workout-focus component, not here-->
+
+<div> 
+    <table *ngIf=currentWorkoutPlan> 
+        <tr *ngFor="let exercise of currentWorkoutPlan.exerciseList; index as i">
+            <th>{{exercise.exerciseName}}</th>
+            <th>{{exercise.exerciseDescription}}</th>
+        </tr>
+    </table>
+</div>
 
 <!-- **ngFor="let workout of workoutList" {{workout.workoutId}}-->

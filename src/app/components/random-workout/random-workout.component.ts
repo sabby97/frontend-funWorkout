@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GenerateWorkoutService } from 'src/app/services/generate-workout.service';
+import { WorkoutService } from 'src/app/services/workout-service';
 
 @Component({
   selector: 'app-random-workout',
@@ -8,14 +8,14 @@ import { GenerateWorkoutService } from 'src/app/services/generate-workout.servic
 })
 export class RandomWorkoutComponent implements OnInit {
 
-  constructor(private generateWorkoutService: GenerateWorkoutService) { }
+  constructor(private workoutService: WorkoutService) { }
 
   ngOnInit(): void {
   }
 
   generateRandomWorkout() {
 
-    this.generateWorkoutService.generateRandomWorkout();
+    this.workoutService.generateRandomWorkout();
 
   }
 

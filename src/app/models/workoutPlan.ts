@@ -1,24 +1,27 @@
-import { NumberValueAccessor } from "@angular/forms";
+import { User } from './User';
+import { Exercise } from './Exercise';
 
-import { User } from "../models/User";
-export class workoutPlan{
+export class WorkoutPlan{
 
-    workoutplanId: Number;
-    workoutName:string;
-    user:User;
+    workoutplanId: number;
+    workoutName: string;
+    exerciseList: Exercise[];
+    user: User;
+
     workoutlikes:number;
     isRecommended:boolean;
+       
+    /*
+    constructor(exerciseList: Exercise[], workoutplanId?: number, workoutName?: string, user?: User){
+        this.workoutplanId = workoutplanId;
+        this.workoutName = workoutName;
+        this.exerciseList = exerciseList;
+        this.user = user;
 
+    };
     
-    constructor(workoutplanId: Number, workoutName:string, user:User,workoutlikes:number, isRecommended:boolean)
-    {
-        this.isRecommended=isRecommended;
-        this.user=user;
-        this.workoutName=workoutName;
-        this.workoutlikes = workoutlikes;
-        this.workoutplanId= workoutplanId;
-    }
-
-//array of exercise
-//
+   constructor(object?: Object) {
+       Object.assign(this, object);
+   }
+   */
 }

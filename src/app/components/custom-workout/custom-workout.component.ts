@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GenerateWorkoutService } from 'src/app/services/generate-workout.service';
+import { WorkoutService } from 'src/app/services/workout-service';
 
 @Component({
   selector: 'app-custom-workout',
@@ -8,7 +8,7 @@ import { GenerateWorkoutService } from 'src/app/services/generate-workout.servic
 })
 export class CustomWorkoutComponent implements OnInit {
 
-  constructor(private generateWorkoutService: GenerateWorkoutService) { }
+  constructor(private workoutService: WorkoutService) { }
 
   ngOnInit(): void {
   }
@@ -17,7 +17,7 @@ export class CustomWorkoutComponent implements OnInit {
 
   generateCustomWorkout() {
 
-    this.generateWorkoutService.generateCustomWorkout(this.selectedIntensity);
+    this.workoutService.generateCustomWorkout(this.selectedIntensity);
 
   }
 
