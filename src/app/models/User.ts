@@ -4,6 +4,9 @@ export class User {
     userName: string;
     password: string;
     isAdmin: boolean;
+
+    //This is necissary for converson from json to User; 'isAdmin' is changed to 'admin' after leaving the backend
+    admin:boolean;
     
 
     constructor(userName: string = "", password: string = "", isAdmin?: boolean, userId?: number) {

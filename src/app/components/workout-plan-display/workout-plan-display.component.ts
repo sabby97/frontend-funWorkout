@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/User';
-import { workoutPlan } from 'src/app/models/workoutPlan';
 import { SignInService } from 'src/app/services/sign-in-service';
 import { WorkoutService } from 'src/app/services/workout-service';
 import { Observable } from 'rxjs';
 import { FocusedMVP } from 'src/app/models/focusedMVP';
+import { WorkoutPlan } from 'src/app/models/WorkoutPlan';
 
 @Component({
   selector: 'app-workout-plan-display',
@@ -14,16 +14,23 @@ import { FocusedMVP } from 'src/app/models/focusedMVP';
 export class WorkoutPlanDisplayComponent implements OnInit {
 
   constructor(private workoutService: WorkoutService) { 
-    this.workoutList = workoutService.workoutList;
-    this.subscribeWorkoutList = workoutService.notifyOfWorkoutList.subscribe((value) => { 
-      this.workoutList = value; 
+
+    this.subscribeWorkoutList = workoutService.notifyOfWorkoutPlanList.subscribe((value) => { 
+      this.workoutPlanList = value; 
+    });
+
+    this.subscribeWorkout = workoutService.notifyOfWorkoutPlan.subscribe((value) => { 
+      this.currentWorkoutPlan = value; 
     });
 
   }
 
    subscribeWorkoutList;
+   subscribeWorkout;
 
-   workoutList: FocusedMVP[];
+   workoutPlanList: WorkoutPlan[];
+   currentWorkoutPlan: WorkoutPlan;
+
    
 
    userId: number = 1;
@@ -35,20 +42,17 @@ export class WorkoutPlanDisplayComponent implements OnInit {
   }
 
 
-  
-   getWorkoutsByUser() {
+  //Still hardcoded for user 1!
+  getWorkoutsByUser() {
     
-     this.workoutService.getWorkoutsByUser(1);
-     console.log(this.workoutList);
-     console.log(typeof(this.workoutList));
+    this.workoutService.getWorkoutsByUserUpdated(1);
+    console.log(this.workoutPlanList);
 
+  }
 
-  //  this.workoutService.getWorkoutsByUser(this.userId).subscribe(
-  //    (response) => {
-  //      console.log(response)
-  //    }
-  //  )  
-
+  selectWorkoutFromList(selectedIndex: number) {
+    this.workoutService.selectWorkoutPlanFromList(selectedIndex);
+    console.log(this.currentWorkoutPlan);
   }
  
   
