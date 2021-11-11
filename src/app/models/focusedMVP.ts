@@ -1,6 +1,6 @@
 // import { SrvRecord } from "dns";
-import { ExerciseTarget } from "./ExerciseTarget";
-import {Exercise} from "./Exercise";
+import { ExerciseTarget } from "../models/ExerciseTarget";
+import {Exercise} from "../models/Exercise";
 export class FocusedMVP
 {
 
@@ -10,10 +10,10 @@ title = 'funWorkoutFrontend';
   description='this will be the area for the workout something here';
   workout='Exercise name';
 
-  userId:number;
-  workoutPlanId:number;
-  workoutName:string;
-  exercises:Array<Exercise>;
+  // userId:number;
+  // workoutPlanId:number;
+  // workoutName:string;
+  // exercises:Array<Exercise>;
 
   
 }

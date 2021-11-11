@@ -4,7 +4,7 @@ import { SignInService } from 'src/app/services/sign-in-service';
 import { WorkoutService } from 'src/app/services/workout-service';
 import { Observable } from 'rxjs';
 import { FocusedMVP } from 'src/app/models/focusedMVP';
-import { WorkoutPlan } from 'src/app/models/WorkoutPlan';
+import { WorkoutPlan } from 'src/app/models/workoutPlan';
 
 @Component({
   selector: 'app-workout-plan-display',

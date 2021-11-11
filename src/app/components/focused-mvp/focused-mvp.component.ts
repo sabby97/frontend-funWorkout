@@ -2,8 +2,12 @@ import { Target } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/User';
 import { ExerciseTarget } from 'src/app/models/ExerciseTarget';
-import { workoutPlan } from "src/app/models/workoutPlan";
+import { WorkoutPlan } from 'src/app/models/workoutPlan';
 import { Exercise } from "src/app/models/Exercise";
+import { from } from 'rxjs';
+import { WorkoutService } from 'src/app/services/workout-service';
+
+
 
 @Component({
   selector: 'app-focused-mvp',
@@ -20,31 +24,39 @@ export class FocusedMvpComponent implements OnInit {
   globalNUM:number=0;
   Areatarget="placeholder";
 
+  subscribeWorkout;
+  currentWorkoutPlan:WorkoutPlan;
+
   user:User={
             userId: 1,
             userName: "anthony",
             password: "one",
-            isAdmin: true
+            isAdmin: true,
+            admin:true
   };
   target:ExerciseTarget={
               exerciseTargetId: 1,
             exerciseTargetName: "arms two"
   };
   
-  workoutPlan:workoutPlan =
-        {
-          workoutplanId: 1,
-          workoutName:"arm bench press",
-          workoutlikes:35,
-          user:this.user,
-          isRecommended:true
-  };
+  // workoutobject= currentWorkoutPlan
+  workoutPlan:WorkoutPlan;
+        // {
+          // workoutplanId: 1,
+          // workoutName:"arm bench press",
+          // workoutlikes:35,
+          // user:this.user,
+          // isRecommended:true,
+          // exerciseList
+          // exerciseList: this.ExerciseList
+  // };
   
   Exercise:Exercise={
     exerciseId: 1,
     exerciseName: "bench press 100lb",
     exerciseDescription: "this is the arm workout description that has been created in the focus mvp section:) this was torture to intalize in typescript ",
-    exerciseTarget:this.target
+    exerciseTarget:this.target,
+    exerciseIntensity :1
   }
 // ///
 // //ARRAY CREATIN 
@@ -53,44 +65,51 @@ export class FocusedMvpComponent implements OnInit {
       exerciseId: 1,
       exerciseName: "bench press 10lb",
       exerciseDescription: "this is the bench press 10lb workout description that has been created in the focus mvp section:) this was torture to intalize in typescript ",
-      exerciseTarget:this.target
+      exerciseTarget:this.target,
+      exerciseIntensity :1
     },
   {
     exerciseId: 2,
     exerciseName: "bench press 200lb",
     exerciseDescription: "this is the bench press 200lb workout description that has been created in the focus mvp section:) this was torture to intalize in typescript ",
-    exerciseTarget:this.target
+    exerciseTarget:this.target,
+    exerciseIntensity :12
   },
   {
     exerciseId: 3,
     exerciseName: "bench press 30lb",
     exerciseDescription: "this is the bench press 30lb workout description that has been created in the focus mvp section:) this was torture to intalize in typescript ",
-    exerciseTarget:this.target
+    exerciseTarget:this.target,
+    exerciseIntensity :3
   },
   {
     exerciseId: 4,
     exerciseName: "bench press 4lb",
     exerciseDescription: "this is the bench press 30lb workout description that has been created in the focus mvp section:) this was torture to intalize in typescript ",
-    exerciseTarget:this.target
+    exerciseTarget:this.target,
+    exerciseIntensity :4
   },
   {
     exerciseId: 5,
     exerciseName: "bench press 500-0lb",
     exerciseDescription: "this is the bench press 500-0lb workout description that has been created in the focus mvp section:) this was torture to intalize in typescript ",
-    exerciseTarget:this.target
+    exerciseTarget:this.target,
+    exerciseIntensity :5
   }
 ];
 userList:User[]=[{
             userId: 2,
             userName: "simion",
             password: "one",
-            isAdmin: false
+            isAdmin: false,
+            admin:false
 },
 { 
             userId: 3,
             userName: "batman",
             password: "one",
-            isAdmin: true
+            isAdmin: true,
+            admin:true
 }
 ];
 targetList:ExerciseTarget[]=[
@@ -117,30 +136,48 @@ targetList:ExerciseTarget[]=[
 
 ]
 
-workoutPlanList:workoutPlan[]=[
+workoutPlanList:WorkoutPlan[]=[
   {
+    // workoutplanId: 2,
+    // workoutName:"leg bench press",
+    // workoutlikes:35,
+    // user:this.user,
+    // isRecommended:true},
+    // exerciseList: Exercise[]
     workoutplanId: 2,
-    workoutName:"leg bench press",
+    workoutName: "leg bench press",
+    exerciseList: this.ExerciseList,
+    user: this.user,
+
     workoutlikes:35,
-    user:this.user,
-    isRecommended:true},
+    isRecommended:true,
+  },
+
   {
     workoutplanId: 3,
     workoutName:"sholders bench press",
     workoutlikes:35,
     user:this.user,
-    isRecommended:false}
+    isRecommended:false,
+    exerciseList: this.ExerciseList}
+    
+  
+
   ];
 
 
 ///
 
 
-  // count:number;
-  constructor(){}
-  // constructor(ExerciseList:Exercise,) { 
-  //   this.Exercise=ExerciseList;
-  // }
+  
+  constructor(private workoutService: WorkoutService) { 
+
+//                                          subject             listen to upadtes ->do this 
+    this.subscribeWorkout = workoutService.notifyOfWorkoutPlan.subscribe((value) => { 
+      this.workoutPlan = value; 
+    });
+
+  }
 
   ngOnInit(): void {
     // this.description=

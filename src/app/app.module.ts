@@ -9,6 +9,7 @@ import { SignInOutComponent } from './components/sign-in-out/sign-in-out.compone
 import { WorkoutPlanDisplayComponent } from './components/workout-plan-display/workout-plan-display.component';
 import { RandomWorkoutComponent } from './components/random-workout/random-workout.component';
 import { CustomWorkoutComponent } from './components/custom-workout/custom-workout.component';
+import {FocusedMvpComponent} from './components/focused-mvp/focused-mvp.component'
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CustomWorkoutComponent } from './components/custom-workout/custom-worko
     SignInOutComponent,
     WorkoutPlanDisplayComponent,
     RandomWorkoutComponent,
-    CustomWorkoutComponent
+    CustomWorkoutComponent,
+    FocusedMvpComponent
   ],
   imports: [
     BrowserModule,
