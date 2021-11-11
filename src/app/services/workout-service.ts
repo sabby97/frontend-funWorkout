@@ -47,6 +47,8 @@ export class WorkoutService {
 
     }
 
+    
+
     getWorkoutsByUserUpdated(userId : number){
 
         this.http.get<WorkoutPlan[]>(`http://localhost:8080/users/${userId}/workouts`).subscribe(
@@ -140,6 +142,8 @@ export class WorkoutService {
     let newWorkoutPlan = new WorkoutPlan();
     newWorkoutPlan.workoutName = jsonIn.workoutName;         
     newWorkoutPlan.workoutplanId = jsonIn.workoutplanId;
+    newWorkoutPlan.isRecommended = jsonIn.isRecommended;
+    newWorkoutPlan.workoutlikes = jsonIn.workoutlikes;
     newWorkoutPlan.exerciseList = this.convertExercisesFromJson(jsonIn.exerciseList);
     newWorkoutPlan.user = this.convertUserFromJson(jsonIn.user);
 
