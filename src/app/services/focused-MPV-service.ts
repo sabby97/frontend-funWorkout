@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { WorkoutPlan } from "../models/workoutPlan";
+import { WorkoutPlan } from "../models/WorkoutPlan";
 
 // import { focusedMVP } from "../models/focusedMVP";
 

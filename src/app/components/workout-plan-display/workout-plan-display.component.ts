@@ -3,8 +3,8 @@ import { User } from 'src/app/models/User';
 import { SignInService } from 'src/app/services/sign-in-service';
 import { WorkoutService } from 'src/app/services/workout-service';
 import { Observable } from 'rxjs';
-import { FocusedMVP } from 'src/app/models/focusedMVP';
-import { WorkoutPlan } from 'src/app/models/workoutPlan';
+import { FocusedMVP } from 'src/app/models/FocusedMVP';
+import { WorkoutPlan } from 'src/app/models/WorkoutPlan';
 
 @Component({
   selector: 'app-workout-plan-display',

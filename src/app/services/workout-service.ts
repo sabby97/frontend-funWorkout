@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
-import { FocusedMVP } from "../models/focusedMVP";
+import { FocusedMVP } from "../models/FocusedMVP";
 
-import { WorkoutPlan } from "../models/workoutPlan";
+import { WorkoutPlan } from "../models/WorkoutPlan";
 import { User } from "../models/User";
 import { Exercise } from "../models/Exercise";
 import { ExerciseTarget } from "../models/ExerciseTarget";
