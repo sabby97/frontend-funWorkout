@@ -11,7 +11,7 @@ title = 'funWorkoutFrontend';
   workout='Exercise name';
 
   userId:number;
-  workoutId:number;
+  workoutPlanId:number;
   workoutName:string;
   exercises:Array<Exercise>;
 
