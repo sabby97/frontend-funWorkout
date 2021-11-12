@@ -1,7 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { WorkoutService } from 'src/app/services/workout-service';
 import { Observable } from 'rxjs';
-import { FocusedMVP } from 'src/app/models/focusedMVP';
 import { WorkoutPlan } from 'src/app/models/WorkoutPlan';
 
 @Injectable({

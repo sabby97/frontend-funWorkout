@@ -1,6 +1,7 @@
 // import { SrvRecord } from "dns";
 import { ExerciseTarget } from "./ExerciseTarget";
 import {Exercise} from "./Exercise";
+/*
 export class FocusedMVP
 {
 
@@ -17,3 +18,4 @@ title = 'funWorkoutFrontend';
 
   
 }
+*/

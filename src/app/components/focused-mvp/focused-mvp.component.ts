@@ -4,7 +4,7 @@ import { User } from 'src/app/models/User';
 import { ExerciseTarget } from 'src/app/models/ExerciseTarget';
 import { WorkoutPlan } from 'src/app/models/WorkoutPlan';
 import { Exercise } from "src/app/models/Exercise";
-import { from } from 'rxjs';
+import { from, Subscription } from 'rxjs';
 import { WorkoutService } from 'src/app/services/workout-service';
 
 
@@ -24,8 +24,8 @@ export class FocusedMvpComponent implements OnInit {
   globalNUM:number=0;
   Areatarget="placeholder";
 
-  subscribeWorkout;
-  currentWorkoutPlan:WorkoutPlan;
+  subscribeWorkout: Subscription;
+  currentWorkoutPlan:WorkoutPlan = new WorkoutPlan();
 
   user:User={
             userId: 1,
