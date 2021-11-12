@@ -1,111 +1,46 @@
-<!--
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
--->
-    
+ 
     <main class="container">
 
       <!-- How to display the workoutPlan variable; it is currently set to display the focused workout-->
-      <div *ngIf="workoutPlan">
+      <!-- <div *ngIf="workoutPlan">
         <h2> {{workoutPlan.workoutName}}</h2>
         <div *ngFor="let exercise of workoutPlan.exerciseList">
           <h3> {{exercise.exerciseName}} (Intensity: {{exercise.exerciseIntensity}})</h3>
           <p> {{exercise.exerciseDescription}} </p>
           <p> Targets: {{exercise.exerciseTarget.exerciseTargetName}} </p>
-        </div>
-      </div>
-
-
-
-      <!-- <table>
-        <tr>one top</tr>
-        <tb>this isbody </tb>
-      </table> -->
-      <div class="bg-light p-5 rounded">
-         
-                  <!-- <h3>{{workout}}</h3> -->
-                  <h3>Exercise Name:{{ExerciseName}}</h3>
-             
-                    
-                  <h3>user name:{{user.userName}}</h3>
-                  <h5>workout description </h5>
-                  <!-- <p>{{description}}</p> -->
-                  <p>{{Exercise.exerciseDescription}}</p>
-
-                  <button (click)="liked()">like</button>
-                    <button (click)="hate()">hate</button>
-                    <button (click)="randomGen()">Random </button>
-                    <button (click)="test()">update</button>
-                    <p>target Area:{{Areatarget}}</p>
-
-
+          <h2>workoutLikes:{{workoutPlan.workoutlikes}}</h2>
+          <button>Like{{workoutlikes}}</button>
+        </div> -->
+        
+        <div class="bg-light p-5 rounded">
+          <!-- How to display the workoutPlan variable; it is currently set to display the focused workout-->
+          <div *ngIf="workoutPlan">
+            <h2> {{workoutPlan.workoutName}}</h2>
             <br>
-                    <!--  -->
-                    <div >
-                      <h3>Exercise Name:{{ExerciseName}}</h3>
-             
-                    
-                      <h3>user name:{{user.userName}}</h3>
-                      <h5>workout description </h5>
-                      <!-- <p>{{description}}</p> -->
-                      <p>{{Exercise.exerciseDescription}}</p>
-    
-                      <button (click)="liked()">like</button>
-                        <button (click)="hate()">hate</button>
-                        <button (click)="randomGen()">Random </button>
-                        <button (click)="test()">update</button>
-                        <p>target Area:{{Areatarget}}</p>
-<h1>this is the list </h1>
-                        <a *ngFor="let exercise of ExerciseList">
-                         
-
-                          
-                          <h3>Exercise Name:{{exercise.exerciseName}}</h3>
-                          <h5>workout description </h5>
-                          <h4>Exercise id:{{exercise.exerciseId}}</h4>
-                      <!-- <p>{{description}}</p> -->
-                      <p>{{exercise.exerciseDescription}}</p>
-                    <br>
-                    <br>
-                        <p>{{exercise.exerciseTarget.exerciseTargetName}}</p>
-                      <!-- <button (click)="liked()">like{{exercise}}</button>
-                        <button (click)="hate()">hate</button>
-                        <button (click)="randomGen()">Random </button>
-                        <button (click)="test()">update</button> -->
-                        <!-- <p>target Area:{{exercise.target}}</p> -->
-                        </a>
-
-
-                      <!-- this is the table  -->
-                      <!-- <table> -->
-                        <!-- <tr>
-                          <th>exercise name   </th>
-                          <th>workout description  </th>
-                          <th>button  </th>
-                      </tr>
-                      <tr> -->
-                      <!-- <tr *ngFor="let lap of laps"> -->
-                        <!-- <td>{{ExerciseName}}</td>
-                        <td>{{Exercise.exerciseDescription}}</td>
-                        <td>{{ Areatarget}}</td>
-                    </tr>
-                 -->
-                  
-                      <!-- </table> -->
-                    </div>
-                    <!--  -->
-                    <br>
-                    <br>
-                    <button (click)="liked()">like</button>
-                    <button (click)="hate()">hate</button>
-                    <button (click)="randomGen()">Random </button>
-                    <button (click)="test()">update</button>
-                    <footer>
-                      <h2>FOTTER END</h2>
-                    </footer>
+            <div *ngFor="let exercise of workoutPlan.exerciseList">
+              <br>
+              <h3> {{exercise.exerciseName}} (Intensity: {{exercise.exerciseIntensity}})</h3>
+              <p> {{exercise.exerciseDescription}} </p>
+              <p> Targets: {{exercise.exerciseTarget.exerciseTargetName}} </p>
               
+              <!-- section for button/exceise UD -->
+              <!-- <div class="UD"> -->
+                <!-- <h4>workoutLikes:</h4>
+                <! <button click="save(workoutPlan.workoutplanId)">save</button> -->
+                 <!-- <button (click)="like(workoutPlan)">like</button> -->
+                <!-- <button (click)="delete(workoutPlan.workoutplanId)">Delete Workout # id {{workoutPlan.workoutplanId}}:</button> -->
+                <!-- <br>  -->
+                <!-- </div> -->
+              
+            </div>
+    
+            
+          </div>
+          
+        
       </div>
-     
+      
+
 
      
 <!-- outside of padding -->

@@ -6,6 +6,7 @@ import { WorkoutPlan } from 'src/app/models/WorkoutPlan';
 import { Exercise } from "src/app/models/Exercise";
 import { from, Subscription } from 'rxjs';
 import { WorkoutService } from 'src/app/services/workout-service';
+import { focusedMVPservice } from 'src/app/services/focused-MPV-service';
 
 
 
@@ -15,18 +16,34 @@ import { WorkoutService } from 'src/app/services/workout-service';
   styleUrls: ['./focused-mvp.component.css']
 })
 export class FocusedMvpComponent implements OnInit {
+  // coded needed to work//
+  subscribeWorkout: Subscription;
+  currentWorkoutPlan:WorkoutPlan = new WorkoutPlan();
+  workoutPlan:WorkoutPlan;
+  workoutlikes:WorkoutPlan['workoutlikes'];
+  likesCalled:number=0;
+
+
+//construtor for the workout object 
+  constructor(private workoutService: WorkoutService) 
+  { 
+//                                          subject             listen to upadtes ->do this 
+    this.subscribeWorkout = workoutService.notifyOfWorkoutPlan.subscribe((value) => { 
+      this.workoutPlan = value; 
+    });
+
+  }
+
+  //place holders
   title = 'funWorkoutFrontend';
           // description= [{Exercisea.exerciseDescription}];
-
   description='this will be the area for the workout something here';
   workout='Exercise name';
   ExerciseName='place holder'
   globalNUM:number=0;
   Areatarget="placeholder";
-
-  subscribeWorkout: Subscription;
-  currentWorkoutPlan:WorkoutPlan = new WorkoutPlan();
-
+//object creations for testing(object path view)
+  
   user:User={
             userId: 1,
             userName: "anthony",
@@ -40,7 +57,7 @@ export class FocusedMvpComponent implements OnInit {
   };
   
   // workoutobject= currentWorkoutPlan
-  workoutPlan:WorkoutPlan;
+  // workoutPlan:WorkoutPlan;
         // {
           // workoutplanId: 1,
           // workoutName:"arm bench press",
@@ -58,8 +75,9 @@ export class FocusedMvpComponent implements OnInit {
     exerciseTarget:this.target,
     exerciseIntensity :1
   }
-// ///
-// //ARRAY CREATIN 
+
+
+  // //ARRAY CREATIN 
   ExerciseList:Exercise[]=[
     {
       exerciseId: 1,
@@ -135,7 +153,6 @@ targetList:ExerciseTarget[]=[
   }
 
 ]
-
 workoutPlanList:WorkoutPlan[]=[
   {
     // workoutplanId: 2,
@@ -163,37 +180,29 @@ workoutPlanList:WorkoutPlan[]=[
     
   
 
-  ];
+];
 
-
-///
 
 
   
-  constructor(private workoutService: WorkoutService) { 
-
-//                                          subject             listen to upadtes ->do this 
-    this.subscribeWorkout = workoutService.notifyOfWorkoutPlan.subscribe((value) => { 
-      this.workoutPlan = value; 
-    });
-
-  }
 
   ngOnInit(): void {
     // this.description=
-    console.log(this.user.userName);
+    // console.log(this.workoutPlan.workoutlikes);
     // console.log(this.ExerciseList); 
     
   }
 
   liked():void{
+    //will be used to add +1 to a specfic workout plan 
     console.log("the like function was called");
+    console.log(this.currentWorkoutPlan)
 
     let count:number=0;
-    count+=1;
+    count=count+1;
     console.log("this is the count "+ count);
-    this.workoutPlanList[1].workoutlikes+=1;
-    console.log(this.workoutPlanList[1].workoutlikes);
+    // this.workoutPlanList[1].workoutlikes+=1;
+    // console.log(this.workoutPlanList[1].workoutlikes);
     
 
 
@@ -204,6 +213,7 @@ workoutPlanList:WorkoutPlan[]=[
 
   
   hate():void{
+    //will be used to remove a exercise or delete a workout
     console.log("the hate button was clicked ");
   }
 
@@ -285,10 +295,32 @@ workoutPlanList:WorkoutPlan[]=[
     // this.Areatarget  =this.ExerciseList[(index)].exerciseTarget.exerciseTargetName;
     this.Areatarget=this.targetList[(index)].exerciseTargetName;
 
+    
+
     console.log("end of all setter");
   }
  
   setAllList():void
   {}
+  delete(id :number):void{
+    console.log("calling delete funtion to remove id "+id );
+    // service layer call
+    // focusedMVPservice.removeExercise(id);
 
+  }
+  like(passedWorkoutPlan:WorkoutPlan):void{
+    if (this.likesCalled==0)
+    {// console.log("calling the like function by id "+id );
+    console.log(passedWorkoutPlan);
+
+    // this.currentWorkoutPlan= this.currentWorkoutPlan;
+      passedWorkoutPlan.workoutlikes= passedWorkoutPlan.workoutlikes+1;
+    console.log(passedWorkoutPlan);
+    // focusedMVPservice.updateLikes(id);
+    this.likesCalled=1;
+
+  }
+
+  }
+  
 }
