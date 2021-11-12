@@ -6,6 +6,7 @@ import { WorkoutPlan } from "../models/WorkoutPlan";
 import { User } from "../models/User";
 import { Exercise } from "../models/Exercise";
 import { ExerciseTarget } from "../models/ExerciseTarget";
+import { SignInService } from "./sign-in-service";
 
 @Injectable({
     providedIn:'root'
@@ -13,7 +14,7 @@ import { ExerciseTarget } from "../models/ExerciseTarget";
 
 export class WorkoutService {
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private signInService : SignInService) {}
     
     
     //The WorkoutPlan that is (should be!) currently displayed in the workout focus.
@@ -136,8 +137,8 @@ export class WorkoutService {
   //delete a workout
   deleteWorkout(){
     let workoutplanId : number = this.currentWorkoutPlan.workoutplanId;
-    let arrIndex:number = -1;
 
+    let arrIndex:number = -1;
     for (let i:number = 0; i<this.currentWorkoutPlanList.length; i++){
       if(this.currentWorkoutPlan.workoutplanId == this.currentWorkoutPlanList[i].workoutplanId){
         arrIndex = i;
@@ -147,20 +148,26 @@ export class WorkoutService {
 
     this.http.delete<WorkoutPlan>(`http://localhost:8080/workouts/${workoutplanId}`,{headers : this.postHeaders}).subscribe(
       (response) => {
-        this.currentWorkoutPlan = null;
-        this.currentWorkoutPlanList.splice(arrIndex,1);
-        console.log("deleted the workout successfully");
-        this.notifyOfWorkoutPlan.next(this.currentWorkoutPlan)
-        this.notifyOfWorkoutPlanList.next(this.currentWorkoutPlanList);
+        if(arrIndex > 0){
+          this.currentWorkoutPlan = null;
+          this.currentWorkoutPlanList.splice(arrIndex,1);
+          console.log("deleted the workout successfully");
+          this.notifyOfWorkoutPlan.next(this.currentWorkoutPlan)
+          this.notifyOfWorkoutPlanList.next(this.currentWorkoutPlanList);
+        }
       }
     );
   }
 
   //save a workout
   saveWorkout(){
+    this.currentWorkoutPlan.user = this.signInService.currentUser;
     let newList:WorkoutPlan[] = this.currentWorkoutPlanList;
     this.http.post<WorkoutPlan>(`http://localhost:8080/workouts/`, this.currentWorkoutPlan, {headers : this.postHeaders}).subscribe(
       (response) => {
+        this.currentWorkoutPlan.workoutplanId = response.workoutplanId;
+        this.currentWorkoutPlan.isRecommended = false;
+        this.currentWorkoutPlan.workoutlikes = 0;
         newList.push(this.currentWorkoutPlan);
         this.currentWorkoutPlanList = newList;
         this.notifyOfWorkoutPlan.next(this.currentWorkoutPlan);
