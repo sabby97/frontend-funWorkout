@@ -16,7 +16,7 @@ export class CustomWorkoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+   
   warmUpBoolean: boolean = true;
   coolDownBoolean: boolean = true;
 
