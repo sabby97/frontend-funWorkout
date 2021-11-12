@@ -131,6 +131,43 @@ export class WorkoutService {
 
   }
 
+  private postHeaders = new HttpHeaders({ 'Context-Type': 'application/json' });
+
+  //delete a workout
+  deleteWorkout(){
+    let workoutplanId : number = this.currentWorkoutPlan.workoutplanId;
+    let arrIndex:number = -1;
+
+    for (let i:number = 0; i<this.currentWorkoutPlanList.length; i++){
+      if(this.currentWorkoutPlan.workoutplanId == this.currentWorkoutPlanList[i].workoutplanId){
+        arrIndex = i;
+        break;
+      }
+    }
+
+    this.http.delete<WorkoutPlan>(`http://localhost:8080/workouts/${workoutplanId}`,{headers : this.postHeaders}).subscribe(
+      (response) => {
+        this.currentWorkoutPlan = null;
+        this.currentWorkoutPlanList.splice(arrIndex,1);
+        console.log("deleted the workout successfully");
+        this.notifyOfWorkoutPlan.next(this.currentWorkoutPlan)
+        this.notifyOfWorkoutPlanList.next(this.currentWorkoutPlanList);
+      }
+    );
+  }
+
+  //save a workout
+  saveWorkout(){
+    let newList:WorkoutPlan[] = this.currentWorkoutPlanList;
+    this.http.post<WorkoutPlan>(`http://localhost:8080/workouts/`, this.currentWorkoutPlan, {headers : this.postHeaders}).subscribe(
+      (response) => {
+        newList.push(this.currentWorkoutPlan);
+        this.currentWorkoutPlanList = newList;
+        this.notifyOfWorkoutPlan.next(this.currentWorkoutPlan);
+        this.notifyOfWorkoutPlanList.next(this.currentWorkoutPlanList);
+      }
+    );
+  }
 
   //Conversion function for translating json to front end models
 

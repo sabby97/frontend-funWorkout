@@ -14,6 +14,7 @@ import { CustomWorkoutComponent } from './components/custom-workout/custom-worko
 import { FocusedMvpComponent } from './components/focused-mvp/focused-mvp.component';
 import { AdminDisplayComponent } from './components/admin-display/admin-display.component';
 import { MaterialModule } from './material/material.module';
+import { UserButtonsComponent } from './components/user-buttons/user-buttons.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MaterialModule } from './material/material.module';
     RandomWorkoutComponent,
     CustomWorkoutComponent,
     FocusedMvpComponent,
-    AdminDisplayComponent
+    AdminDisplayComponent,
+    UserButtonsComponent
   ],
   imports: [
     BrowserModule,
