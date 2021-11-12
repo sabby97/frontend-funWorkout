@@ -161,6 +161,7 @@ export class WorkoutService {
 
   //save a workout
   saveWorkout(){
+    this.currentWorkoutPlan.workoutplanId = null;
     this.currentWorkoutPlan.user = this.signInService.currentUser;
     let newList:WorkoutPlan[] = this.currentWorkoutPlanList;
     this.http.post<WorkoutPlan>(`http://localhost:8080/workouts/`, this.currentWorkoutPlan, {headers : this.postHeaders}).subscribe(
