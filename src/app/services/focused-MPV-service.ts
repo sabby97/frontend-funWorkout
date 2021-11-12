@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { WorkoutPlan } from "../models/WorkoutPlan";
+import {FocusedMVP} from "../models/focusedMVP";
 
 // import { focusedMVP } from "../models/focusedMVP";
 
@@ -10,23 +11,33 @@ import { WorkoutPlan } from "../models/WorkoutPlan";
 
 export class focusedMVPservice
 {
-    //local sessoin gets user id 
-    //  id=1;
-    //  async getWorkout(id:number):Promise<workoutPlan> {
-        
-     
-    //     let httpResponse = await fetch(`http://localhost:8080/users/${id}/workouts`);
+    constructor(private http: HttpClient) {}
 
-    //     this.workout = await httpResponse.json();
-    //     console.log(this.workout);
-        
+    //for updating a workout like 
+   async updateLikes(workoutlikes:number, exerciseId:number)
+   {
+            const bodyData = {
+            workoutlikes:workoutlikes= workoutlikes
+                };
 
+        let httpResponse = await fetch(`http://localhost:8080/exercises/`+exerciseId, {
+            method: 'PATCH',
+            headers: new Headers({'content-type': 'application/json'}),
+            body: JSON.stringify(bodyData)
+            });
+    };
+    
 
-    //     return this.workout;
-    // }
+    async removeExercise(exerciseId:number)
+    {
+        const bodyData = { };
 
-  
-      
-        // this.currentUser = await httpResponse.json();
+        let httpResponse = await fetch(`http://localhost:8080/exercises/`+exerciseId, {
+            method: 'DELETE',
+            headers: new Headers({'content-type': 'application/json'}),
+            body: JSON.stringify(bodyData)
+            });
+    }
+    
 
 }
