@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/User';
-import { SignInService } from 'src/app/services/sign-in-service';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { WorkoutService } from 'src/app/services/workout-service';
-import { Observable } from 'rxjs';
-import { FocusedMVP } from 'src/app/models/focusedMVP';
 import { WorkoutPlan } from 'src/app/models/WorkoutPlan';
+
+@Injectable({
+  providedIn:'root'
+})
 
 @Component({
   selector: 'app-workout-plan-display',
@@ -31,22 +31,24 @@ export class WorkoutPlanDisplayComponent implements OnInit {
    workoutPlanList: WorkoutPlan[];
    currentWorkoutPlan: WorkoutPlan;
 
-   
-
-   userId: number = 1;
-   
-  
+   userId: number;
 
   ngOnInit(): void {
     this.getWorkoutsByUser();
   }
-
-
-  //Still hardcoded for user 1!
-  getWorkoutsByUser() {
+  
+   getWorkoutsByUser() {
     
-    this.workoutService.getWorkoutsByUserUpdated(1);
-    console.log(this.workoutPlanList);
+    if(localStorage.getItem('userId')) {
+       
+       this.workoutService.getWorkoutsByUser(localStorage.getItem('userId'));
+       
+       console.log(this.workoutPlanList);
+       console.log(typeof(this.workoutPlanList));
+       
+    } else {
+      alert('You must be signed in to get saved workouts');
+    }
 
   }
 

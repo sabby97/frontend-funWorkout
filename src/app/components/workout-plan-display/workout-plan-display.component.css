@@ -1,0 +1,17 @@
+table {
+    width: 500px;
+  }
+  
+  .example-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+  }
+  
+  .mat-row:nth-child(even) {
+    background-color: #F8F8F8;
+  }
+  
+  .mat-row:nth-child(odd) {
+    background-color: #FFFFFF;
+  }

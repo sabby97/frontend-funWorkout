@@ -5,7 +5,7 @@ export class User {
     password: string;
     isAdmin: boolean;
 
-    //This is necissary for converson from json to User; 'isAdmin' is changed to 'admin' after leaving the backend
+    //This is necessary for converson from json to User; 'isAdmin' is changed to 'admin' after leaving the backend
     admin:boolean;
     
 
