@@ -11,6 +11,7 @@ import { RandomWorkoutComponent } from './components/random-workout/random-worko
 import { CustomWorkoutComponent } from './components/custom-workout/custom-workout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
+import {FocusedMvpComponent} from './components/focused-mvp/focused-mvp.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MatTableModule } from '@angular/material/table';
     SignInOutComponent,
     WorkoutPlanDisplayComponent,
     RandomWorkoutComponent,
-    CustomWorkoutComponent
+    CustomWorkoutComponent,
+    FocusedMvpComponent
   ],
   imports: [
     BrowserModule,
