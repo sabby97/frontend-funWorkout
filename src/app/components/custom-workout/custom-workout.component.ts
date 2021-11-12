@@ -16,8 +16,15 @@ export class CustomWorkoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectedIntensity: number = 1;
+  //
+  warmUpBoolean: boolean = true;
+  coolDownBoolean: boolean = true;
+
+  selectedMinIntensity: number = 1;
+  selectedMaxIntensity: number = 3;
   selectedTargetId: number;
+
+  selectedWorkoutLength: number = 3;
 
   exerciseTargetNames = ["arms", "chest", "back", "legs", "core", "glutes", "cardio"];
 
@@ -25,12 +32,7 @@ export class CustomWorkoutComponent implements OnInit {
 
   generateCustomWorkout() {
 
-    let targetBinaryCode;
-
-    console.log(this.targetCheckboxBooleans);
-    
-
-    this.workoutService.generateCustomWorkout(this.selectedIntensity);
+  this.workoutService.generateCustomWorkout(this.selectedWorkoutLength, this.selectedMinIntensity, this.selectedMaxIntensity, this.targetCheckboxBooleans, this.warmUpBoolean, this.coolDownBoolean);
 
   }
 

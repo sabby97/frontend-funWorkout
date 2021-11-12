@@ -9,8 +9,9 @@
       <div *ngIf="workoutPlan">
         <h2> {{workoutPlan.workoutName}}</h2>
         <div *ngFor="let exercise of workoutPlan.exerciseList">
-          <p> {{exercise.exerciseName}} </p>
+          <h3> {{exercise.exerciseName}} (Intensity: {{exercise.exerciseIntensity}})</h3>
           <p> {{exercise.exerciseDescription}} </p>
+          <p> Targets: {{exercise.exerciseTarget.exerciseTargetName}} </p>
         </div>
       </div>
 

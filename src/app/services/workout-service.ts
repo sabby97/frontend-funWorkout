@@ -101,10 +101,15 @@ export class WorkoutService {
 
   }
 
-  async generateCustomWorkout(intensity: number) {
+  async generateCustomWorkout(selectedWorkoutLength: number, minIntensity: number, maxIntensity: number, targetCheckboxBooleans: boolean[], warmUp: boolean, coolDown: boolean) {
 
     const bodyData = {
-      intensity: intensity,
+      workoutLength: selectedWorkoutLength,
+      minIntensity: minIntensity,
+      maxIntensity: maxIntensity,
+      selectedExerciseTargetIds: targetCheckboxBooleans,
+      warmUp: warmUp,
+      coolDown: coolDown
     };
     let httpResponse = await fetch(`http://localhost:8080/exercises/customList`, {
         method: 'POST',
