@@ -1,33 +1,38 @@
 <h3>Your Workouts</h3>
 
+
+<!-- <table mat-table [dataSource]="workoutList">
+    <ng-container matColumnDef="score">
+        <th mat-header-cell *matHeaderCellDef> Score </th>
+        <td mat-cell *matCellDef="let user"> {{user.score}} </td>
+      </ng-container>
+      
+  </table> -->
+
 <table>
     <tr>
         <th>Workout Name</th>
-        <th>Creator</th>
-        <th>Price</th>
+        <th>Number of Exercises</th>
         <th>Likes</th>
-        <th ></th>
+        <th>Recommended</th>
+        
     </tr>
 
     <tr *ngFor="let workout of workoutPlanList; index as i">
-        <td> {{workout.workoutName}}</td>
-        <!-- Placeholder, replace with a better looking button -->
-        <td> <button (click)="selectWorkoutFromList(i)"> {{workout.workoutplanId}} </button></td>
-        <td style="text-align: right;">here</td>
-        <td>so </td>
-        <td>you see</td>
+        <td style="text-align: center;"> <button (click)="selectWorkoutFromList(i)">  {{workout.workoutName}}</button></td>
+        <td style="text-align: center;">{{workout.exerciseList.length}}</td>
+        <td style="text-align: center;">likes </td>
+        <td style="text-align: center;">is recommended?</td>
     </tr>
     
 </table>
 
-
-
-<button (click)="getWorkoutsByUser()">Click Me</button>
+<br>
 
 
 
 <!-- This should be displayed in the workout-focus component, not here-->
-
+<!-- 
 <div> 
     <table *ngIf=currentWorkoutPlan> 
         <tr *ngFor="let exercise of currentWorkoutPlan.exerciseList; index as i">
@@ -35,6 +40,6 @@
             <th>{{exercise.exerciseDescription}}</th>
         </tr>
     </table>
-</div>
+</div> -->
 
 <!-- **ngFor="let workout of workoutList" {{workout.workoutId}}-->

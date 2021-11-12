@@ -11,9 +11,10 @@ export class SignInService {
 
     constructor(private http: HttpClient) { }
 
+    // The signed in user should be available here.  Access it by injecting this
+    // Service into your component class constructor
     currentUser: User;
-    // private postHeaders = new HttpHeaders({ 'Context-Type': 'application/json' });
-
+    
     async signIn(username: string, password: string):Promise<User> {
         
      
@@ -22,12 +23,11 @@ export class SignInService {
         this.currentUser = await httpResponse.json();
         console.log(this.currentUser);
         
-        // localStorage.setItem('userId', this.currentUser.userId);
+         localStorage.setItem('userId', this.currentUser.userId as unknown as string);
          localStorage.setItem('userName', this.currentUser.userName);
          localStorage.setItem('password', this.currentUser.password);
-         //localStorage.setItem('admin', this.currentUser.isAdmin);
+         localStorage.setItem('admin', this.currentUser.isAdmin as unknown as string);
         
-
         return this.currentUser;
     }
 

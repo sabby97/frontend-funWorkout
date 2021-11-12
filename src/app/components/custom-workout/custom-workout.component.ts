@@ -8,16 +8,31 @@ import { WorkoutService } from 'src/app/services/workout-service';
 })
 export class CustomWorkoutComponent implements OnInit {
 
-  constructor(private workoutService: WorkoutService) { }
+  constructor(private workoutService: WorkoutService) {
+    this.targetCheckboxBooleans = [true, true, true, true, true, true, true];
+
+   }
 
   ngOnInit(): void {
   }
 
-  selectedIntensity: number = 1;
+   
+  warmUpBoolean: boolean = true;
+  coolDownBoolean: boolean = true;
+
+  selectedMinIntensity: number = 1;
+  selectedMaxIntensity: number = 3;
+  selectedTargetId: number;
+
+  selectedWorkoutLength: number = 3;
+
+  exerciseTargetNames = ["arms", "chest", "back", "legs", "core", "glutes", "cardio"];
+
+  targetCheckboxBooleans: boolean[];
 
   generateCustomWorkout() {
 
-    this.workoutService.generateCustomWorkout(this.selectedIntensity);
+  this.workoutService.generateCustomWorkout(this.selectedWorkoutLength, this.selectedMinIntensity, this.selectedMaxIntensity, this.targetCheckboxBooleans, this.warmUpBoolean, this.coolDownBoolean);
 
   }
 

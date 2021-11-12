@@ -1,62 +1,66 @@
-<h3>Admin access</h3>
-<br>
-<div id="add-exercise-div">
-    <label for="exercise-name">exercise name:</label>
-    <input type="text" id="exercise-name">
+<div ngIf="checkAdmin()">
+    <h3>Admin access</h3>
     <br>
-    <label for="exercise-intensity">exercise intensity:</label>
-    <input type="text" id="exercise-intensity">
+    <div id="add-exercise-div">
+        <label for="exercise-name">exercise name:</label>
+        <input type="text" id="exercise-name">
+        <br>
+        <label for="exercise-intensity">exercise intensity:</label>
+        <input type="text" id="exercise-intensity">
+        <br>
+        <label for="exercise-target">select target area:</label>
+        <select name="exercise-target" id="exercise-target">
+            <option value="1">arms</option>
+            <option value="2">chest</option>
+            <option value="3">back</option>
+            <option value="4">legs</option>
+            <option value="5">core</option>
+            <option value="6">glutes</option>
+            <option value="7">cardio</option>
+        </select>
+        <br>
+        <label for="exercise-description">exercise description:</label>
+        <input type="text" id="exercise-description">
+        <button onclick="addExercise('exercise-name', 'exercise-intensity', 'exercise-target', 'exercise-description')">add exercise to database</button>
+    </div>
     <br>
-    <label for="exercise-target">select target area:</label>
-    <select name="exercise-target" id="exercise-target">
-        <option value="1">arms</option>
-        <option value="2">chest</option>
-        <option value="3">back</option>
-        <option value="4">legs</option>
-        <option value="5">core</option>
-        <option value="6">glutes</option>
-        <option value="7">cardio</option>
-    </select>
     <br>
-    <label for="exercise-description">exercise description:</label>
-    <input type="text" id="exercise-description">
-    <button>add exercise to database</button>
-</div>
-<br>
-<br>
-<div id="get-exercise-div">
-    <label for="input">get exercise by ID</label>
+    <div id="get-exercise-div">
+        <label for="input">get exercise by ID</label>
+        <input type="text" id="input">
+        <button onclick="getExercise('input')">get exercise</button>
+    </div>
+    <br>
+    <br>
+    <div id="update-exercise-div">
+        <label for="exerciseID">exercise ID</label>
+        <input type="text" id="exerciseID">
+        <label for="exercise-name">exercise name:</label>
+        <input type="text" id="exercise-name">
+        <br>
+        <label for="exercise-intensity">exercise intensity:</label>
+        <input type="text" id="exercise-intensity">
+        <br>
+        <label for="exercise-target">select target area:</label>
+        <select name="exercise-target" id="exercise-target">
+            <option value="1">arms</option>
+            <option value="2">chest</option>
+            <option value="3">back</option>
+            <option value="4">legs</option>
+            <option value="5">core</option>
+            <option value="6">glutes</option>
+            <option value="7">cardio</option>
+        </select>
+        <br>
+        <label for="exercise-description">exercise description:</label>
+        <input type="text" id="exercise-description">
+        <button onclick="updateExercise('exerciseID','exercise-name', 'exercise-intensity', 'exercise-target', 'exercise-description')">update exercise</button>
+    </div>
+    <br>
+    <br>
+    <div id="delete-exercise-div">
+    <label for="input">delete exercise by id</label>
     <input type="text" id="input">
-    <button>get exercise</button>
-</div>
-<br>
-<br>
-<div id="update-exercise-div">
-    <label for="exercise-name">exercise name:</label>
-    <input type="text" id="exercise-name">
-    <br>
-    <label for="exercise-intensity">exercise intensity:</label>
-    <input type="text" id="exercise-intensity">
-    <br>
-    <label for="exercise-target">select target area:</label>
-    <select name="exercise-target" id="exercise-target">
-        <option value="1">arms</option>
-        <option value="2">chest</option>
-        <option value="3">back</option>
-        <option value="4">legs</option>
-        <option value="5">core</option>
-        <option value="6">glutes</option>
-        <option value="7">cardio</option>
-    </select>
-    <br>
-    <label for="exercise-description">exercise description:</label>
-    <input type="text" id="exercise-description">
-    <button>update exercise</button>
-</div>
-<br>
-<br>
-<div id="delete-exercise-div">
-<label for="input">delete exercise by id</label>
-<input type="text" id="input">
-<button>delete exercise from database</button>
-</div>
+    <button onclick="deleteExercise('input')">delete exercise from database</button>
+    </div>
+    </div>
