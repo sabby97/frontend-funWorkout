@@ -1,15 +1,19 @@
 table {
-    width: 500px;
+    width: auto;
+    
   }
+
+
   
+
   .example-container {
-    width: 100%;
-    max-width: 100%;
+    width: auto;
+    max-width: auto;
     overflow: auto;
   }
   
   .mat-row:nth-child(even) {
-    background-color: #F8F8F8;
+    background-color: #13125f;
   }
   
   .mat-row:nth-child(odd) {
