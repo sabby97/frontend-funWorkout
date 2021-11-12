@@ -1,7 +1,13 @@
 
-<div *ngIf="signedOutToggle">
-  <div class="form-group row">
-    <label for="userInput" class="col-sm-4 col-form-label">Username</label>
+
+
+
+<mat-card>
+  <!-- <mat-icon color="primary">account_circle</mat-icon> -->
+
+<div class="mat-subheading-2 border" *ngIf="signedOutToggle">
+  <div  class="form-group row">
+    <label  for="userInput" class="col-sm-4 col-form-label">Username</label>
     <div class="col-sm-4">
         <input type="text" class="form-control" id="userInput" [(ngModel)]="username" >
     </div>
@@ -14,13 +20,16 @@
   </div>
 </div>
 <div class="form-group row">
-    <div *ngIf="signedOutToggle" class="col-sm-4">
-        <button  type="button" class="btn btn-primary"    (click)="signIn()">Sign In</button>
+  <mat-icon color="primary">account_circle</mat-icon>
+  <div  *ngIf="signedOutToggle" class="col-sm-4 ">
+        <button mat-raised-button color="primary" (click)="signIn()">Sign In</button>
+        <button mat-raised-button  color="primary"   >Sign Up</button> 
     </div>
-    <button *ngIf="!signedOutToggle" type="button" class="btn btn-primary" (click)="signOut()">Sign Out</button>
+    <button mat-raised-button color="primary" *ngIf="!signedOutToggle" type="button" class="btn btn-primary" (click)="signOut()">Sign Out</button>  
 </div>
 
 
+</mat-card>
 
 
 

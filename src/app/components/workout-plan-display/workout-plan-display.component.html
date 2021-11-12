@@ -1,45 +1,37 @@
-<h3>Your Workouts</h3>
 
-
-<!-- <table mat-table [dataSource]="workoutList">
-    <ng-container matColumnDef="score">
-        <th mat-header-cell *matHeaderCellDef> Score </th>
-        <td mat-cell *matCellDef="let user"> {{user.score}} </td>
-      </ng-container>
-      
-  </table> -->
-
-<table>
-    <tr>
-        <th>Workout Name</th>
-        <th>Number of Exercises</th>
-        <th>Likes</th>
-        <th>Recommended</th>
-        
-    </tr>
-
-    <tr *ngFor="let workout of workoutPlanList; index as i">
-        <td style="text-align: center;"> <button (click)="selectWorkoutFromList(i)">  {{workout.workoutName}}</button></td>
-        <td style="text-align: center;">{{workout.exerciseList.length}}</td>
-        <td style="text-align: center;">likes </td>
-        <td style="text-align: center;">is recommended?</td>
-    </tr>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+               
+        </mat-panel-title>
+        <mat-panel-title>
+            <div class="mat-title"  >Saved Workouts</div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <table>
+            
+        <tr>
+            <th>Workout Name</th>
+            <th>Recommended</th> 
+            <th>Likes</th>
+            <th>Exercises</th>
+           
+        </tr>
     
-</table>
+        <tr *ngFor="let workout of workoutPlanList; index as i">
+            <td style="text-align: center;"> <button color="primary" mat-raised-button (click)="selectWorkoutFromList(i)">  {{workout.workoutName}}</button></td>
+            <td style="text-align: center;"> <button color="" mat-raised-button (click)="selectWorkoutFromList(i)">  is recommended?</button></td>
+            <td style="text-align: center;"> <button color="warn" mat-raised-button (click)="selectWorkoutFromList(i)">  likes</button></td>
+            <td style="text-align: center;"> <button color="accent" mat-raised-button (click)="selectWorkoutFromList(i)">  {{workout.exerciseList.length}}</button></td> 
+        </tr>   
+    </table>
+    </mat-expansion-panel>
+
+
+
+
 
 <br>
 
 
 
-<!-- This should be displayed in the workout-focus component, not here-->
-<!-- 
-<div> 
-    <table *ngIf=currentWorkoutPlan> 
-        <tr *ngFor="let exercise of currentWorkoutPlan.exerciseList; index as i">
-            <th>{{exercise.exerciseName}}</th>
-            <th>{{exercise.exerciseDescription}}</th>
-        </tr>
-    </table>
-</div> -->
-
-<!-- **ngFor="let workout of workoutList" {{workout.workoutId}}-->
