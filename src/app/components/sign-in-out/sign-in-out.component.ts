@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/models/User';
 import { SignInService } from 'src/app/services/sign-in-service';
 import { WorkoutPlanDisplayComponent } from '../workout-plan-display/workout-plan-display.component';
@@ -16,6 +16,8 @@ export class SignInOutComponent implements OnInit {
     
   }
 
+  
+
   username: string;
   password: string;
   signedOutToggle: boolean = true;
@@ -27,8 +29,8 @@ export class SignInOutComponent implements OnInit {
     
     if (this.currentUser.userId !== 0) {
       this.signedOutToggle = false;
-      this.username = "";
-      this.password = "";
+      // this.username = "";
+      // this.password = "";
       
       // Calls getWorkoutsByUser() in order to populate list of saved workouts 
       // when a user signs in
