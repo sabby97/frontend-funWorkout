@@ -28,19 +28,7 @@ export class WorkoutService {
     notifyOfWorkoutPlanList: Subject<WorkoutPlan[]> = new Subject<WorkoutPlan[]>();
     
 
-    // we need to make call a to the backend to grab a list of workouts by user to this endpoint:
-    // `http://localhost:8080/users/${userId}/workouts`
-    // getWorkoutsByUser(userId : number){
-       
-    //     return  this.http.get<FocusedMVP[]>(`http://localhost:8080/users/${userId}/workouts`).subscribe(
-    //           (response)=>{
-    //             //   focusedMvp = new FocusedMVP();
-    //               this.workoutList = response;
-    //               this.notifyOfWorkoutList.next(this.workoutList);
-    //           }
-    //       )
-
-    // }
+   
 
     getWorkoutsByUser(userId: string){
 
@@ -50,6 +38,7 @@ export class WorkoutService {
               //Converts the json into an array of WorkoutPlan objects
                 let newWorkoutPlanArray: WorkoutPlan[] = [];
 
+                if (response !== null) {
                 response.forEach(workoutJson => {
                     let newWorkoutPlan: WorkoutPlan = this.convertWorkoutPlanFronJson(workoutJson);
                     newWorkoutPlanArray.push(newWorkoutPlan);
@@ -57,6 +46,7 @@ export class WorkoutService {
 
                 this.currentWorkoutPlanList = newWorkoutPlanArray;
                 this.notifyOfWorkoutPlanList.next(this.currentWorkoutPlanList);
+              }
             }
         )
 
@@ -173,6 +163,7 @@ export class WorkoutService {
         this.currentWorkoutPlanList = newList;
         this.notifyOfWorkoutPlan.next(this.currentWorkoutPlan);
         this.notifyOfWorkoutPlanList.next(this.currentWorkoutPlanList);
+        
       }
     );
   }

@@ -41,7 +41,7 @@ export class WorkoutPlanDisplayComponent implements OnInit {
     
   }
   
-   getWorkoutsByUser() {
+   getWorkoutsByUser(userId : number) {
     
     if(localStorage.getItem('userId')) {
        
