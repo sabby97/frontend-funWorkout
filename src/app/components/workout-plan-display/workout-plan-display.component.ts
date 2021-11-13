@@ -35,7 +35,7 @@ export class WorkoutPlanDisplayComponent implements OnInit {
    userId: number;
 
   ngOnInit(): void {
-    this.getWorkoutsByUser();
+    //this.getWorkoutsByUser();
   }
   
    getWorkoutsByUser() {

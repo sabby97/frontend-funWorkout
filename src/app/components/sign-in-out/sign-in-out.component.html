@@ -15,7 +15,7 @@
 </div>
 <div class="form-group row">
     <div *ngIf="signedOutToggle" class="col-sm-4">
-        <button  type="button" class="btn btn-primary"    (click)="signIn()">Sign In</button>
+        <button  type="button" class="btn btn-primary"  id="sign-in-button"  (click)="signIn()">Sign In</button>
     </div>
     <button *ngIf="!signedOutToggle" type="button" class="btn btn-primary" (click)="signOut()">Sign Out</button>
 </div>
