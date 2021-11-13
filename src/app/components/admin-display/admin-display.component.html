@@ -1,4 +1,5 @@
-<div ngIf="checkAdmin()">
+<div ng-init="adminChecker()"></div>
+<mat-card *ngIf="checkAdmin">
     <h3>Admin access</h3>
     <br>
     <div id="add-exercise-div">
@@ -14,21 +15,21 @@
             <option value="2">chest</option>
             <option value="3">back</option>
             <option value="4">legs</option>
-            <option value="5">core</option>
+            <option value="5">core</option> 
             <option value="6">glutes</option>
             <option value="7">cardio</option>
         </select>
         <br>
         <label for="exercise-description">exercise description:</label>
         <input type="text" id="exercise-description">
-        <button onclick="addExercise('exercise-name', 'exercise-intensity', 'exercise-target', 'exercise-description')">add exercise to database</button>
+        <button onclick="addExercise('exercise-name', 'exercise-intensity', 'exercise-target', 'exercise-description')" id="addExerciseButton">add exercise to database</button>
     </div>
     <br>
     <br>
     <div id="get-exercise-div">
         <label for="input">get exercise by ID</label>
         <input type="text" id="input">
-        <button onclick="getExercise('input')">get exercise</button>
+        <button onclick="getExercise('input')" id= "getExerciseButton">get exercise</button>
     </div>
     <br>
     <br>
@@ -54,7 +55,8 @@
         <br>
         <label for="exercise-description">exercise description:</label>
         <input type="text" id="exercise-description">
-        <button onclick="updateExercise('exerciseID','exercise-name', 'exercise-intensity', 'exercise-target', 'exercise-description')">update exercise</button>
+        <button onclick="updateExercise('exerciseID','exercise-name', 'exercise-intensity', 'exercise-target', 'exercise-description')" id=
+        "updateExerciseButton">update exercise</button>
     </div>
     <br>
     <br>
@@ -62,7 +64,11 @@
     <div id="delete-exercise-div">
     <label for="input">delete exercise by id</label>
     <input type="text" id="input">
-    <button onclick="deleteExercise('input')">delete exercise from database</button>
+    <button onclick="deleteExercise('input')" id = "deleteExerciseButton">delete exercise from database</button>
     </div>
+<<<<<<< HEAD
     
     </div>
+=======
+</mat-card>
+>>>>>>> 0ac062f (changes to admin-display and admin-service ONLY)
