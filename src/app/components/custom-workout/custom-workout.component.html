@@ -1,27 +1,57 @@
-<p>custom-workout works!</p>
 
-<label value="workoutLengthInput"> Number of Exercises (1-15)</label>
-<input id="workoutLengthInput" type="number" [(ngModel)]="selectedWorkoutLength" min="1" max="15">
-<br>
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         
+        </mat-panel-title>
+        <mat-panel-title>
+            <div class="mat-title"> Create A Custom Workout</div>  
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>custom-workout works!</p>
 
-<label value="minIntensityInput"> Select Minimum Intensity (1-3)</label>
-<input id="minIntensityInput" type="number" [(ngModel)]="selectedMinIntensity" min="1" max="{{selectedMaxIntensity}}">
-<br>
-<label value="maxIntensityInput"> Select Maximum Intensity (1-3)</label>
-<input id="maxIntensityInput" type="number" [(ngModel)]="selectedMaxIntensity" min="{{selectedMinIntensity}}" max="3">
-<br><br>
+      <label value="workoutLengthInput"> Number of Exercises (1-15)</label>
+      <input id="workoutLengthInput" type="number" [(ngModel)]="selectedWorkoutLength" min="1" max="15">
+      <br>
+      
+      <label value="minIntensityInput"> Select Minimum Intensity (1-3)</label>
+      <input id="minIntensityInput" type="number" [(ngModel)]="selectedMinIntensity" min="1" max="{{selectedMaxIntensity}}">
+      <br>
+      <label value="maxIntensityInput"> Select Maximum Intensity (1-3)</label>
+      <input id="maxIntensityInput" type="number" [(ngModel)]="selectedMaxIntensity" min="{{selectedMinIntensity}}" max="3">
+      <br><br>
+      
+      
+      <div *ngFor="let target of exerciseTargetNames; index as i">
+          <input type="checkbox" id="targetCheckbox{{i}}" name="selected_target" [(ngModel)]="targetCheckboxBooleans[i]">
+          <label for="targetCheckbox{{i}}">{{target}}</label><br>
+      </div> <br>
+      
+      <input type="checkbox" id="warmUpCheckbox" [(ngModel)]="warmUpBoolean">
+      <label for="warmUpCheckbox">Add warm up?</label><br>
+      <input type="checkbox" id="warmUpCheckbox" [(ngModel)]="coolDownBoolean">
+      <label for="warmUpCheckbox">Add cooldown?</label><br>
+      
+      
+      
+      <button (click)="generateCustomWorkout()"> Generate Custom Workout </button>
+    </mat-expansion-panel>
+    <!-- <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Self aware panel
+        </mat-panel-title>
+        <mat-panel-description>
+          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel> -->
+  </mat-accordion>
+  
 
 
-<div *ngFor="let target of exerciseTargetNames; index as i">
-    <input type="checkbox" id="targetCheckbox{{i}}" name="selected_target" [(ngModel)]="targetCheckboxBooleans[i]">
-    <label for="targetCheckbox{{i}}">{{target}}</label><br>
-</div> <br>
-
-<input type="checkbox" id="warmUpCheckbox" [(ngModel)]="warmUpBoolean">
-<label for="warmUpCheckbox">Add warm up?</label><br>
-<input type="checkbox" id="warmUpCheckbox" [(ngModel)]="coolDownBoolean">
-<label for="warmUpCheckbox">Add cooldown?</label><br>
 
 
-
-<button (click)="generateCustomWorkout()"> Generate Custom Workout </button>

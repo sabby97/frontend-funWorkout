@@ -1,35 +1,46 @@
-
-
-
-
-<mat-card>
-  <!-- <mat-icon color="primary">account_circle</mat-icon> -->
-
-<div class="mat-subheading-2 border" *ngIf="signedOutToggle">
-  <div  class="form-group row">
-    <label  for="userInput" class="col-sm-4 col-form-label">Username</label>
-    <div class="col-sm-4">
-        <input type="text" class="form-control" id="userInput" [(ngModel)]="username" >
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        
+      </mat-panel-title>
+      <mat-panel-title>
+        Sign In Or Create New User
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card>
+      <!-- <mat-icon color="primary">account_circle</mat-icon> -->
+    
+    <div class="mat-subheading-2 border" *ngIf="signedOutToggle">
+      <div  class="form-group row">
+        <label  for="userInput" class="col-sm-4 col-form-label">Username</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="userInput" [(ngModel)]="username" >
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="passwordInput" class="col-sm-4 col-form-label">Password</label>
+        <div class="col-sm-4">
+            <input type="password" class="form-control" id="passwordInput" [(ngModel)]="password">
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label for="passwordInput" class="col-sm-4 col-form-label">Password</label>
-    <div class="col-sm-4">
-        <input type="password" class="form-control" id="passwordInput" [(ngModel)]="password">
+    <div class="form-group row">
+      <mat-icon color="primary">account_circle</mat-icon>
+      <div  *ngIf="signedOutToggle" class="col-sm-4 ">
+            <button id="signInButton" mat-raised-button color="primary" (click)="signIn()">Sign In</button>
+            <button id="signUpButton" mat-raised-button  color="primary"   >Sign Up</button> 
+        </div>
+        <button id="signOutButton" mat-raised-button color="primary" *ngIf="!signedOutToggle" type="button" class="btn btn-primary" (click)="signOut()">Sign Out</button>  
     </div>
-  </div>
-</div>
-<div class="form-group row">
-  <mat-icon color="primary">account_circle</mat-icon>
-  <div  *ngIf="signedOutToggle" class="col-sm-4 ">
-        <button mat-raised-button color="primary" (click)="signIn()">Sign In</button>
-        <button mat-raised-button  color="primary"   >Sign Up</button> 
-    </div>
-    <button mat-raised-button color="primary" *ngIf="!signedOutToggle" type="button" class="btn btn-primary" (click)="signOut()">Sign Out</button>  
-</div>
+    
+    
+    </mat-card>
+  </mat-expansion-panel>
 
 
-</mat-card>
+
+
 
 
 

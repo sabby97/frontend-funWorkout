@@ -17,6 +17,7 @@
           <div *ngIf="workoutPlan">
             <h2> {{workoutPlan.workoutName}}</h2>
             <br>
+            
             <div *ngFor="let exercise of workoutPlan.exerciseList">
               <br>
               <h3> {{exercise.exerciseName}} (Intensity: {{exercise.exerciseIntensity}})</h3>

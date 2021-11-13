@@ -1,0 +1,27 @@
+#generateButton {
+    
+    
+    color: rgb(206, 77, 105);
+}
+
+.mat-display-1 {
+    width: 640px; /* Can be in percentage also. */
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+
+    
+}
+
+.generateDiv {
+
+    width: 700px; /* Can be in percentage also. */
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+
+
+}
+
