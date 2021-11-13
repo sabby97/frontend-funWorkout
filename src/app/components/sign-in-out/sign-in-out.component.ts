@@ -22,19 +22,20 @@ export class SignInOutComponent implements OnInit {
   password: string;
   signedOutToggle: boolean = true;
   currentUser: User;
-
+  
+  
   async signIn() {
   
     this.currentUser = await this.signInService.signIn(this.username, this.password);
     
-    if (this.currentUser.userId !== 0) {
+    if (localStorage.getItem("userId") as unknown as number !== 0) {
       this.signedOutToggle = false;
       // this.username = "";
       // this.password = "";
       
       // Calls getWorkoutsByUser() in order to populate list of saved workouts 
       // when a user signs in
-      this.workoutPlanList.getWorkoutsByUser();
+      this.workoutPlanList.getWorkoutsByUser(this.currentUser.userId);
 
     } else {
       alert("There is no user with these credentials.  Please try again.");
@@ -45,6 +46,20 @@ export class SignInOutComponent implements OnInit {
   signOut() {
       this.signInService.signOut();
       this.signedOutToggle = true;
+  }
+
+  signUp() {
+    
+    if (this.username !== "" && this.password !== "") {
+      this.currentUser = new User(this.username, this.password, false);
+      
+      this.signInService.signUp(this.currentUser);
+      
+      this.signIn();
+    
+    } else {
+      alert("Please enter a name and a password");
+    }
   }
 
 }
