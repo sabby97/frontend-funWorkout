@@ -38,7 +38,11 @@ export class WorkoutPlanDisplayComponent implements OnInit {
   indeterminate = false;
 
   ngOnInit(): void {
+<<<<<<< HEAD
     
+=======
+    //this.getWorkoutsByUser();
+>>>>>>> RyanFrontEndTesting
   }
   
    getWorkoutsByUser(userId : number) {
