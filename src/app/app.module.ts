@@ -7,6 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { SignInOutComponent } from './components/sign-in-out/sign-in-out.component';
 import { WorkoutPlanDisplayComponent } from './components/workout-plan-display/workout-plan-display.component';
@@ -31,7 +34,10 @@ import { AdminDisplayComponent } from './components/admin-display/admin-display.
     HttpClientModule,
     AppRoutingModule,
     MatTableModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

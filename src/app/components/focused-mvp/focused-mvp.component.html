@@ -1,5 +1,46 @@
- 
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+       Current Exercise List
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card>
+    </mat-card>
     <main class="container">
+
+        <mat-card>
+            <div class="mat-subheading-2 border">
+          <!-- How to display the workoutPlan variable; it is currently set to display the focused workout-->
+          <div *ngIf="workoutPlan">
+            <h2> {{workoutPlan.workoutName}}</h2>
+            <br>
+            <div *ngFor="let exercise of workoutPlan.exerciseList">
+              <!-- if(workoutPlan.workoutplanId %2=0) -->
+              <mat-card color="warn">
+
+              
+               <br >
+              <h3> {{exercise.exerciseName}} (Intensity: {{exercise.exerciseIntensity}})</h3>
+              <p> {{exercise.exerciseDescription}} </p>
+              <p> Targets: {{exercise.exerciseTarget.exerciseTargetName}} </p>
+            </mat-card>
+                </div>       
+          </div>
+        </div>
+        </mat-card>
+
+     
+<!-- outside of padding -->
+</main>
+<!-- outside of scope -->
+
+
+    
+
+
+</mat-expansion-panel>
+
 
       <!-- How to display the workoutPlan variable; it is currently set to display the focused workout-->
       <!-- <div *ngIf="workoutPlan">
@@ -11,41 +52,3 @@
           <h2>workoutLikes:{{workoutPlan.workoutlikes}}</h2>
           <button>Like{{workoutlikes}}</button>
         </div> -->
-        
-        <div class="bg-light p-5 rounded">
-          <!-- How to display the workoutPlan variable; it is currently set to display the focused workout-->
-          <div *ngIf="workoutPlan">
-            <h2> {{workoutPlan.workoutName}}</h2>
-            <br>
-            <div *ngFor="let exercise of workoutPlan.exerciseList">
-              <br>
-              <h3> {{exercise.exerciseName}} (Intensity: {{exercise.exerciseIntensity}})</h3>
-              <p> {{exercise.exerciseDescription}} </p>
-              <p> Targets: {{exercise.exerciseTarget.exerciseTargetName}} </p>
-              
-              <!-- section for button/exceise UD -->
-              <!-- <div class="UD"> -->
-                <!-- <h4>workoutLikes:</h4>
-                <! <button click="save(workoutPlan.workoutplanId)">save</button> -->
-                 <!-- <button (click)="like(workoutPlan)">like</button> -->
-                <!-- <button (click)="delete(workoutPlan.workoutplanId)">Delete Workout # id {{workoutPlan.workoutplanId}}:</button> -->
-                <!-- <br>  -->
-                <!-- </div> -->
-              
-            </div>
-    
-            
-          </div>
-          
-        
-      </div>
-      
-
-
-     
-<!-- outside of padding -->
-</main>
-<!-- outside of scope -->
-
-
-    
