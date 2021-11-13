@@ -5,3 +5,11 @@ label {
 button {
     margin-right: 4px;
 }
+
+.signin-acc:hover{
+    background-color: rgb(58, 103, 155) !important;
+}
+
+.signin-acc{
+    background-color: rgb(117, 199, 247);
+}
