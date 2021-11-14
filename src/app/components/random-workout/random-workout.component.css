@@ -1,28 +1,26 @@
 #generateButton {
     
     
-    color:white;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(175, 112, 218);
 }
 
-.mat-display-1 {
-    width: 700px; /* Can be in percentage also. */
+.generateCard:hover {
+    background-color: rgb(58, 103, 155) !important;
+}
+.generateCard{
+    background-color: rgb(117, 199, 247);
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+ .generateDiv {
+
+    width: 10%; /* Can be in percentage also. */
     height: auto;
-    margin: 0 auto;
+    margin-left: 40%;
     padding: 10px;
-    position: relative;
-
-    
-}
-
-.generateDiv {
-
-    width: 700px; /* Can be in percentage also. */
-    height: auto;
-    margin: 0 auto;
-    padding: 10px;
-    position: relative;
+    /* position: relative;  */
 
 
-}
+} 
 

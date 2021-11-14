@@ -22,11 +22,12 @@ export class AdminService {
     // async returnAdmin(){
     //   return this.adminVal;
     // }
-    // async CheckAdmin(check:boolean) 
-    // {
-    //   this.adminVal= check;
+    async checkAdmin(check:boolean) 
+     {
+       return check;
+
        
-    // }
+     }
     
 
     async addExercise(exerciseName: string, exerciseIntensity: number, exercisePrimaryTarget_fk: number, exerciseDescription: string)

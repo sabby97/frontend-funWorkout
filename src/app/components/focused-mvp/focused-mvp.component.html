@@ -1,5 +1,5 @@
  
-    <mat-card id="focus-card">
+    <mat-accordion id="focus-card" *ngIf="workoutPlan">
 
       <!-- How to display the workoutPlan variable; it is currently set to display the focused workout-->
       <!-- <div *ngIf="workoutPlan">
@@ -12,14 +12,22 @@
           <button>Like{{workoutlikes}}</button>
         </div> -->
         
-        <div class="bg-light p-5 rounded">
+        <mat-expansion-panel hideToggle id="custom-body" >
+          <mat-expansion-panel-header class="custom-head">
+            <mat-panel-title>
+             
+            </mat-panel-title>
+            <mat-panel-title>
+              <div class="mat-title"> {{workoutPlan.workoutName}}</div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
           <!-- How to display the workoutPlan variable; it is currently set to display the focused workout-->
-          <div *ngIf="workoutPlan">
-            <h2> {{workoutPlan.workoutName}}</h2>
+         
+            
             <br>
             
-            <div *ngFor="let exercise of workoutPlan.exerciseList">
-              <br>
+            <mat-card *ngFor="let exercise of workoutPlan.exerciseList" id="exercise-box">
+              
               <h3> {{exercise.exerciseName}} (Intensity: {{exercise.exerciseIntensity}})</h3>
               <p> {{exercise.exerciseDescription}} </p>
               <p> Targets: {{exercise.exerciseTarget.exerciseTargetName}} </p>
@@ -33,19 +41,20 @@
                 <!-- <br>  -->
                 <!-- </div> -->
               
-            </div>
+                
+         
+            </mat-card>
             <app-user-buttons></app-user-buttons>
-            
-          </div>
+         
           
         
-      </div>
+
       
 
-
+        </mat-expansion-panel>
      
 <!-- outside of padding -->
-</mat-card>
+    </mat-accordion>
 <!-- outside of scope -->
 
 

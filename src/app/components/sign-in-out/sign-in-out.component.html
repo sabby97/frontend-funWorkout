@@ -1,6 +1,6 @@
 <mat-accordion>
-<mat-expansion-panel hideToggle>
-  <mat-expansion-panel-header class="signin-acc">
+<mat-expansion-panel hideToggle id="signin-body">
+  <mat-expansion-panel-header class="signin-header">
       <mat-panel-title>
                
       </mat-panel-title>
@@ -14,7 +14,7 @@
 
 
       <!-- <mat-icon color="primary">account_circle</mat-icon> -->
-    
+    <mat-card id="signin-box">
     <div class="mat-subheading-2 border" *ngIf="signedOutToggle">
       <div  class="form-group row">
         <label  for="userInput" class="col-sm-4 col-form-label">Username</label>
@@ -31,17 +31,17 @@
     </div>
     <div class="form-group row">
       
-      <mat-icon color="primary" *ngIf="!signedOutToggle">account_circle</mat-icon>
-    <div class="mat-subheading-2" *ngIf="!signedOutToggle">{{username}}</div>
+      <mat-icon *ngIf="!signedOutToggle" class="profile">account_circle</mat-icon>
+      <div class="mat-subheading-2" *ngIf="!signedOutToggle">{{username}}</div>
       
       <div  *ngIf="signedOutToggle" class="col-sm-4 ">
-            <button id="signInButton" mat-raised-button color="primary" (click)="signIn()">Sign In</button>
-            <button id="signUpButton" mat-raised-button  color="primary" (click)="signUp()" >Sign Up</button> 
+            <button id="signInButton" mat-raised-button (click)="signIn()">Sign In</button>
+            <button id="signUpButton" mat-raised-button  (click)="signUp()" >Sign Up</button> 
         </div>
-        <button id="signOutButton" mat-raised-button color="primary" *ngIf="!signedOutToggle" type="button" class="btn btn-primary" (click)="signOut()">Sign Out</button>  
+        <button id="signOutButton" mat-raised-button *ngIf="!signedOutToggle" type="button" class="btn btn-primary" (click)="signOut()">Sign Out</button>  
       
-   </div>
-    
+    </div>
+    </mat-card>
 
   </mat-expansion-panel>
 </mat-accordion>
