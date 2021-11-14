@@ -2,6 +2,8 @@ import { Component, Injectable, OnInit, } from '@angular/core';
 import { WorkoutService } from 'src/app/services/workout-service';
 import { Observable } from 'rxjs';
 import { WorkoutPlan } from 'src/app/models/WorkoutPlan';
+import { SignInService } from 'src/app/services/sign-in-service';
+
 
 @Injectable({
   providedIn:'root'
@@ -14,7 +16,11 @@ import { WorkoutPlan } from 'src/app/models/WorkoutPlan';
 })
 export class WorkoutPlanDisplayComponent implements OnInit {
 
-  constructor(private workoutService: WorkoutService) { 
+  constructor(private workoutService: WorkoutService, private signInservice: SignInService) { 
+    this.subscribeRecommendedList = workoutService.notifyOfRecommendedWorkoutList.subscribe(
+      (value) => {
+        this.recommendedWorkoutList = value;
+      });
 
     this.subscribeWorkoutList = workoutService.notifyOfWorkoutPlanList.subscribe((value) => { 
       this.workoutPlanList = value; 
@@ -26,16 +32,15 @@ export class WorkoutPlanDisplayComponent implements OnInit {
 
   }
 
+   subscribeRecommendedList;
    subscribeWorkoutList;
    subscribeWorkout;
 
+   recommendedWorkoutList: WorkoutPlan[];
    workoutPlanList: WorkoutPlan[];
    currentWorkoutPlan: WorkoutPlan;
 
    userId: number;
-
-  checked = false;
-  indeterminate = false;
 
   ngOnInit(): void {
     
@@ -50,20 +55,30 @@ export class WorkoutPlanDisplayComponent implements OnInit {
        console.log(this.workoutPlanList);
        console.log(typeof(this.workoutPlanList));
        
+       
     } else {
       alert('You must be signed in to get saved workouts');
     }
 
   }
 
+  getRecommendedWorkouts() {
+    this.workoutService.getRecommendedWorkouts();
+  }
+
   selectWorkoutFromList(selectedIndex: number) {
     this.workoutService.selectWorkoutPlanFromList(selectedIndex);
     console.log(this.currentWorkoutPlan);
   }
- 
+
+  selectRecommendedWorkoutFromList(recommendedWorkout: WorkoutPlan) {
+    this.currentWorkoutPlan = recommendedWorkout;
+    this.workoutService.notifyOfWorkoutPlan.next(this.currentWorkoutPlan);
+    console.log("Pulling " + this.currentWorkoutPlan.workoutName + " from recommended workouts");
+  }
+
   
 }
-
 
 
 
