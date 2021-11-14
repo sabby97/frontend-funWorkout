@@ -3,10 +3,29 @@ table {
     
   }
 
-  button{
+  #select-button{
     background-color: rgb(175, 112, 218);
     margin: 10px; 
   }  
+
+  #recommended-button{
+    background-color: rgb(175, 112, 218);
+    margin: 10px; 
+  }  
+
+  #like-button{
+    background-color: rgb(175, 112, 218);
+    margin: 10px; 
+  }  
+
+  #like-count-button{
+    background-color: rgb(175, 112, 218);
+    margin: 10px; 
+  }  
+
+  .workout-box{
+    background-color: rgb(117, 199, 247);
+  }
 
   .example-container {
     width: auto;
