@@ -4,4 +4,25 @@ label {
 
 button {
     margin-right: 4px;
+    background-color: rgb(175, 112, 218);
 }
+
+.signin-header:hover{
+    background-color: rgb(58, 103, 155) !important;
+}
+
+/* .signin-header{
+    background-color: rgb(117, 199, 247);
+} */
+#signin-body{
+    background-color: rgb(117, 199, 247);
+    margin-left: 10%;
+    margin-right: 10%;
+}
+#signin-box{
+    background-color: rgb(177, 177, 177);
+}
+.profile{
+    color: rgb(139, 89, 172);
+}
+
