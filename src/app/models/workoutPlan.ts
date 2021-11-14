@@ -5,7 +5,7 @@ import { Exercise } from './Exercise';
 export class WorkoutPlan{
 
     workoutplanId: number;
-    workoutName: string;
+    workoutName: String;
     exerciseList: Exercise[];
     user: User;
 

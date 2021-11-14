@@ -6,6 +6,7 @@ import { WorkoutPlan } from 'src/app/models/WorkoutPlan';
 import { Exercise } from "src/app/models/Exercise";
 import { from, Subscription } from 'rxjs';
 import { WorkoutService } from 'src/app/services/workout-service';
+import { SignInService } from 'src/app/services/sign-in-service';
 import { focusedMVPservice } from 'src/app/services/focused-MPV-service';
 
 
@@ -18,19 +19,34 @@ import { focusedMVPservice } from 'src/app/services/focused-MPV-service';
 export class FocusedMvpComponent implements OnInit {
   // coded needed to work//
   subscribeWorkout: Subscription;
+
   currentWorkoutPlan:WorkoutPlan = new WorkoutPlan();
   workoutPlan:WorkoutPlan;
   workoutlikes:WorkoutPlan['workoutlikes'];
   likesCalled:number=0;
 
+  currentUser: User;
+  subscribeUser: Subscription;
+
+  saveWorkoutNameInput: String;
+
 
 //construtor for the workout object 
-  constructor(private workoutService: WorkoutService) 
+  constructor(private workoutService: WorkoutService, private signInservice: SignInService) 
   { 
 //                                          subject             listen to upadtes ->do this 
     this.subscribeWorkout = workoutService.notifyOfWorkoutPlan.subscribe((value) => { 
       this.workoutPlan = value; 
+      if(null != this.workoutPlan) {
+        this.saveWorkoutNameInput = value.workoutName;
+      }
     });
+
+    this.subscribeUser = signInservice.notifyOfUser.subscribe((value) => { 
+      this.currentUser = value; 
+    });
+
+    this.workoutService.connectToMVPComponent(this);
 
   }
 
