@@ -1,5 +1,5 @@
 <mat-accordion>
-  <mat-expansion-panel hideToggle>
+  <mat-expansion-panel hideToggle id="logInUserPanel">
     <mat-expansion-panel-header>
       <mat-panel-title>
         
@@ -25,7 +25,6 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
     <div class="form-group row">
       <mat-icon color="primary">account_circle</mat-icon>
       <div  *ngIf="signedOutToggle" class="col-sm-4 ">
@@ -40,16 +39,6 @@
   </mat-expansion-panel>
 
 
-=======
-  </div>
-</div>
-<div class="form-group row">
-    <div *ngIf="signedOutToggle" class="col-sm-4">
-        <button  type="button" class="btn btn-primary"  id="sign-in-button"  (click)="signIn()">Sign In</button>
-    </div>
-    <button *ngIf="!signedOutToggle" type="button" id="sign-out-button" class="btn btn-primary" (click)="signOut()">Sign Out</button>
-</div>
->>>>>>> RyanFrontEndTesting
 
 
 
