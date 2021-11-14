@@ -3,8 +3,10 @@ table {
     
   }
 
-
-  
+  button{
+    background-color: rgb(175, 112, 218);
+    margin: 10px; 
+  }  
 
   .example-container {
     width: auto;
