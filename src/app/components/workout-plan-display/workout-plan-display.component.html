@@ -1,37 +1,63 @@
+    <mat-expansion-panel hideToggle class="plan-head" *ngIf="workoutPlanList">
+      <mat-expansion-panel-header class="plan-head">
 
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
         <mat-panel-title>
                
         </mat-panel-title>
         <mat-panel-title>
-            <div class="mat-title"  >Saved Workouts</div>
+            <div class="mat-title">Choose A Workout</div>
         </mat-panel-title>
       </mat-expansion-panel-header>
+      
+      
+    <mat-card>
       <table>
-            
+
+            <div class="mat-subheading-2">Your Saved Workouts</div>
         <tr>
+
             <th>Workout Name</th>
             <th>Recommended</th> 
             <th>Likes</th>
             <th>Exercises</th>
            
+
         </tr>
-    
+
         <tr *ngFor="let workout of workoutPlanList; index as i">
-            <td style="text-align: center;"> <button color="primary" mat-raised-button (click)="selectWorkoutFromList(i)">  {{workout.workoutName}}</button></td>
-            <td style="text-align: center;"> <button color="" mat-raised-button (click)="selectWorkoutFromList(i)">  is recommended?</button></td>
-            <td style="text-align: center;"> <button color="warn" mat-raised-button (click)="selectWorkoutFromList(i)">  likes</button></td>
-            <td style="text-align: center;"> <button color="accent" mat-raised-button (click)="selectWorkoutFromList(i)">  {{workout.exerciseList.length}}</button></td> 
+            <td style="text-align: center;"> <button  mat-raised-button (click)="selectWorkoutFromList(i)" id="select-button">  {{workout.workoutName}}</button></td>
+            <td style="text-align: center;"> <button  mat-raised-button (click)="selectWorkoutFromList(i)" id="recommended-button">  is recommended?</button></td>
+            <td style="text-align: center;"> <button  mat-raised-button (click)="selectWorkoutFromList(i)" id="like-button">  likes</button></td>
+            <td style="text-align: center;"> <button  mat-raised-button (click)="selectWorkoutFromList(i)" id="like-count-button">  {{workout.exerciseList.length}}</button></td> 
         </tr>   
-    </table>
-    </mat-expansion-panel>
+      </table>
+    </mat-card>
+    
+    <br>
+
+        <mat-card>
+            <table>
+                  <div class="mat-subheading-2">Recommended Workouts</div>
+              <tr>
+                  <th>Workout Name</th>
+                  <th>Recommended</th> 
+                  <th>Likes</th>
+                  <th>Exercises</th>       
+              </tr>
+              <tr *ngFor="let workout of recommendedWorkoutList; index as i">
+                  <td style="text-align: center;"> <button color="primary" mat-raised-button (click)="selectRecommendedWorkoutFromList(workout)">  {{workout.workoutName}}</button></td>
+                  <td style="text-align: center;"> <button color="" mat-raised-button (click)="selectRecommendedWorkoutFromList(workout)">  is recommended?</button></td>
+                  <td style="text-align: center;"> <button color="warn" mat-raised-button (click)="selectRecommendedWorkoutFromList(workout)">  likes</button></td>
+                  <td style="text-align: center;"> <button color="accent" mat-raised-button (click)="selectRecommendedWorkoutFromList(workout)">  {{workout.exerciseList.length}}</button></td> 
+              </tr>   
+            </table>
+        </mat-card>
+
+    
 
 
-
-
-
+  </mat-expansion-panel>
 <br>
-
+</div>
 
 

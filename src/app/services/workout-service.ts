@@ -17,16 +17,17 @@ export class WorkoutService {
     constructor(private http: HttpClient, private signInService : SignInService) {}
     
     
+
     //The WorkoutPlan that is (should be!) currently displayed in the workout focus.
     currentWorkoutPlan: WorkoutPlan;
     //The array of WorkoutPlans that is currently displayed in the workout-plan-display component.
     currentWorkoutPlanList: WorkoutPlan[] = [];
-    
+    recommendedWorkoutList: WorkoutPlan[] = [];
     //The Subject that broadcasts the current WorkoutPlan to display in the workout focus component
     notifyOfWorkoutPlan: Subject<WorkoutPlan> = new Subject<WorkoutPlan>();
     //The Subject that broadcasts the current Array of WorkoutPlans to display in the workout-plan-display component.
     notifyOfWorkoutPlanList: Subject<WorkoutPlan[]> = new Subject<WorkoutPlan[]>();
-    
+    notifyOfRecommendedWorkoutList: Subject<WorkoutPlan[]> = new Subject<WorkoutPlan[]>();
 
    
 
@@ -41,7 +42,10 @@ export class WorkoutService {
                 if (response !== null) {
                 response.forEach(workoutJson => {
                     let newWorkoutPlan: WorkoutPlan = this.convertWorkoutPlanFronJson(workoutJson);
+                    
+                    if(newWorkoutPlanArray.length < 6) {
                     newWorkoutPlanArray.push(newWorkoutPlan);
+                    }
                 })
 
                 this.currentWorkoutPlanList = newWorkoutPlanArray;
@@ -50,6 +54,26 @@ export class WorkoutService {
             }
         )
 
+    }
+
+    getRecommendedWorkouts() {
+
+      this.http.get<WorkoutPlan[]>('http://localhost:8080/workouts/rec').subscribe(
+        (response) => {
+            let recommendedWorkoutArray: WorkoutPlan[] = [];
+            
+            if(response !== null) {
+              response.forEach(workoutJson => {
+                let retrievedWorkout: WorkoutPlan = this.convertWorkoutPlanFronJson(workoutJson);
+                recommendedWorkoutArray.push(retrievedWorkout)
+              })
+              
+              this.recommendedWorkoutList = recommendedWorkoutArray;
+              this.notifyOfRecommendedWorkoutList.next(this.recommendedWorkoutList);
+            }
+        }
+      )
+      
     }
 
     selectWorkoutPlanFromList(selectedIndex: number) {

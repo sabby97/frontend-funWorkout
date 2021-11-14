@@ -1,0 +1,9 @@
+.custom-head:hover{
+    background-color: rgb(58, 103, 155) !important;
+}
+
+.custom-head{
+    background-color: rgb(117, 199, 247);
+    margin-left: 10%;
+    margin-right: 10%;
+}

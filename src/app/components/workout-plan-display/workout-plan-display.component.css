@@ -19,3 +19,13 @@ table {
   .mat-row:nth-child(odd) {
     background-color: #FFFFFF;
   }
+  .plan-head{
+    background-color: rgb(177, 177, 177);
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .plan-head:hover{
+    background-color: rgb(58, 103, 155) !important;
+}
+
