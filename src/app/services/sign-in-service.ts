@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from "../models/User";
+import { Subject } from "rxjs";
+import { Admin } from "../models/Admin";
 
 
 @Injectable({
@@ -14,6 +16,8 @@ export class SignInService {
     // The signed in user should be available here.  Access it by injecting this
     // Service into your component class constructor
     currentUser: User;
+    // to let admin access know if the user loggin in is an admin
+    notifyOfAdmin: Subject<Admin> = new Subject<Admin>();
 
     private postHeaders = new HttpHeaders({ 'Context-Type': 'application/json' });
     
@@ -29,13 +33,14 @@ export class SignInService {
          localStorage.setItem('userName', this.currentUser.userName);
          localStorage.setItem('password', this.currentUser.password);
          localStorage.setItem('admin', this.currentUser.isAdmin as unknown as string);
-        
+         const newAdmin = new Admin(this.currentUser.isAdmin);
+         this.notifyOfAdmin.next(newAdmin);
         return this.currentUser;
     }
 
     signOut() {
         this.currentUser = null;
-        localStorage.clear()
+        this.notifyOfAdmin= null;
     }
 
     signUp(user: User) {

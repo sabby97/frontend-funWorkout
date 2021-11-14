@@ -1,0 +1,11 @@
+#custom-body{
+    background-color: rgb(117, 199, 247);
+    margin-left: 10%;
+    margin-right: 10%;
+}
+#exercise-box{
+    background-color: rgb(177, 177, 177);
+}
+.custom-head:hover{
+    background-color: rgb(58, 103, 155) !important;
+}

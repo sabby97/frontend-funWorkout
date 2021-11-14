@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from "../models/User";
 import { Exercise } from '../models/Exercise';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,15 +17,18 @@ export class AdminService {
     headers:Headers;
     body:Body;
     
+    adminVal:boolean;
 
-    async checkAdmin()
-    {
-      let adminString = localStorage.getItem('admin');
-      if (adminString == 'false')
-        return 0;
-      else 
-        return 1;
-    } 
+    // async returnAdmin(){
+    //   return this.adminVal;
+    // }
+    async checkAdmin(check:boolean) 
+     {
+       return check;
+
+       
+     }
+    
 
     async addExercise(exerciseName: string, exerciseIntensity: number, exercisePrimaryTarget_fk: number, exerciseDescription: string)
     {

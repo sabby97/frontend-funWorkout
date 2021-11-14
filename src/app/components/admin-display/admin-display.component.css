@@ -1,0 +1,17 @@
+.admin-head{
+    background-color: rgb(177, 177, 177);
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.admin-head:hover{
+        background-color: rgb(58, 103, 155) !important;
+    
+}
+.exercise-div{
+    background-color: rgb(117, 199, 247);
+}
+button{
+    background-color: rgb(175, 112, 218);
+    margin: 10px;
+}
+
