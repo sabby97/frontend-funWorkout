@@ -15,12 +15,13 @@ export class AdminDisplayComponent implements OnInit {
   adminUser:User;
   checkAdmin:Boolean;
   admin:Admin;
+  adminBool: Boolean;
 
 
   constructor(private adminService:AdminService, private signInService:SignInService) 
   {
-    this.sub = signInService.notifyOfAdmin.subscribe((value) => 
-    {this.admin = value;})
+    this.sub = signInService.notifyOfAdmin.subscribe((admin) => 
+    {this.adminBool = admin.value;})
 
    }
 

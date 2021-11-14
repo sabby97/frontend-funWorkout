@@ -1,17 +1,10 @@
  
     <mat-accordion id="focus-card" *ngIf="workoutPlan">
 
+
       <!-- How to display the workoutPlan variable; it is currently set to display the focused workout-->
-      <!-- <div *ngIf="workoutPlan">
-        <h2> {{workoutPlan.workoutName}}</h2>
-        <div *ngFor="let exercise of workoutPlan.exerciseList">
-          <h3> {{exercise.exerciseName}} (Intensity: {{exercise.exerciseIntensity}})</h3>
-          <p> {{exercise.exerciseDescription}} </p>
-          <p> Targets: {{exercise.exerciseTarget.exerciseTargetName}} </p>
-          <h2>workoutLikes:{{workoutPlan.workoutlikes}}</h2>
-          <button>Like{{workoutlikes}}</button>
-        </div> -->
-        
+      <div *ngIf="workoutPlan" id="sampleWorkoutFocusDiv">
+
         <mat-expansion-panel hideToggle id="custom-body" >
           <mat-expansion-panel-header class="custom-head">
             <mat-panel-title>
@@ -44,14 +37,22 @@
                 
          
             </mat-card>
-            <app-user-buttons></app-user-buttons>
+            <div *ngIf="currentUser">
+              <p> Save workout with new name:</p>
+              <input id="saveWorkoutNameInput" [(ngModel)] = "saveWorkoutNameInput">
+              <app-user-buttons ></app-user-buttons>
+            </div>
+            
          
           
-        
-
       
 
         </mat-expansion-panel>
+
+        </div>
+
+
+        
      
 <!-- outside of padding -->
     </mat-accordion>

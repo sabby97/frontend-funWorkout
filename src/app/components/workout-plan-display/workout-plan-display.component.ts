@@ -51,10 +51,8 @@ export class WorkoutPlanDisplayComponent implements OnInit {
     if(localStorage.getItem('userId')) {
        
        this.workoutService.getWorkoutsByUser(localStorage.getItem('userId'));
-       
-       console.log(this.workoutPlanList);
-       console.log(typeof(this.workoutPlanList));
-       
+
+  
        
     } else {
       alert('You must be signed in to get saved workouts');

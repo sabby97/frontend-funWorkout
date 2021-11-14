@@ -8,14 +8,25 @@ import { Exercise } from "../models/Exercise";
 import { ExerciseTarget } from "../models/ExerciseTarget";
 import { SignInService } from "./sign-in-service";
 
+import { FocusedMvpComponent } from "../components/focused-mvp/focused-mvp.component"
+
 @Injectable({
     providedIn:'root'
 })
 
 export class WorkoutService {
 
-    constructor(private http: HttpClient, private signInService : SignInService) {}
-    
+    constructor(private http: HttpClient, private signInService : SignInService) {
+
+      this.signInService.connectToWorkoutService(this);
+
+    }
+
+    connectToMVPComponent(MVPComponentIn: FocusedMvpComponent){
+      this.focusedMvpComponent = MVPComponentIn;
+    }    
+
+    focusedMvpComponent: FocusedMvpComponent;
     
 
     //The WorkoutPlan that is (should be!) currently displayed in the workout focus.
@@ -79,6 +90,18 @@ export class WorkoutService {
     selectWorkoutPlanFromList(selectedIndex: number) {
       this.currentWorkoutPlan = this.currentWorkoutPlanList[selectedIndex];
       this.notifyOfWorkoutPlan.next(this.currentWorkoutPlan);
+    }
+
+    //Called on signout
+    clearWorkoutData() {
+      this.currentWorkoutPlan = null;
+      this.currentWorkoutPlanList = null;
+      this.recommendedWorkoutList = null;
+
+      this.notifyOfWorkoutPlan.next(this.currentWorkoutPlan);
+      this.notifyOfWorkoutPlanList.next(this.currentWorkoutPlanList);
+      this.notifyOfRecommendedWorkoutList.next(this.recommendedWorkoutList);
+  
     }
 
     // let jsonObject = response.json() as Object;
@@ -177,6 +200,7 @@ export class WorkoutService {
   saveWorkout(){
     this.currentWorkoutPlan.workoutplanId = null;
     this.currentWorkoutPlan.user = this.signInService.currentUser;
+    this.currentWorkoutPlan.workoutName = this.focusedMvpComponent.saveWorkoutNameInput;
     let newList:WorkoutPlan[] = this.currentWorkoutPlanList;
     this.http.post<WorkoutPlan>(`http://localhost:8080/workouts/`, this.currentWorkoutPlan, {headers : this.postHeaders}).subscribe(
       (response) => {
