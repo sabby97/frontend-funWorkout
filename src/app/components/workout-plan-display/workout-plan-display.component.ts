@@ -39,6 +39,7 @@ export class WorkoutPlanDisplayComponent implements OnInit {
    recommendedWorkoutList: WorkoutPlan[];
    workoutPlanList: WorkoutPlan[];
    currentWorkoutPlan: WorkoutPlan;
+   userName: string = localStorage.getItem("userName");
 
    userId: number;
 
@@ -51,8 +52,6 @@ export class WorkoutPlanDisplayComponent implements OnInit {
     if(localStorage.getItem('userId')) {
        
        this.workoutService.getWorkoutsByUser(localStorage.getItem('userId'));
-
-  
        
     } else {
       alert('You must be signed in to get saved workouts');

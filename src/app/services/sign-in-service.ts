@@ -39,9 +39,7 @@ export class SignInService{
       
         this.currentUser = await httpResponse.json();
         this.notifyOfUser.next(this.currentUser);
-
-        
-         
+             
          localStorage.setItem('userId', this.currentUser.userId as unknown as string);
          localStorage.setItem('userName', this.currentUser.userName);
          localStorage.setItem('password', this.currentUser.password);
