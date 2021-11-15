@@ -18,7 +18,7 @@
         <input type="text" id="exercise-intensity" [(ngModel)]="exerciseIntensity">
         <br>
         <label for="exercise-target">select target area:</label>
-        <select name="exercise-target" id="exercise-target" [(ngModel)]="exerciseTarget">
+        <select name="exercise-target" id="exercise-target" [(ngModel)]="exerciseTargetId">
             <option value="1">arms</option>
             <option value="2">chest</option>
             <option value="3">back</option>
@@ -37,9 +37,14 @@
     <br>
     <mat-card class="exercise-div">
         <label for="input">get exercise by ID</label>
-        <input type="text" id="input">
+        <input type="text" id="input" [(ngModel)]="exerciseID">
         <br>
         <button  mat-raised-button (click)="getExercise()" id= "getExerciseButton">get exercise</button>
+    </mat-card>
+    <mat-card class="view-exercise-card" *ngIf="getButtonToggle">
+        <h3> {{currentExercise.exerciseName}} (Intensity: {{currentExercise.exerciseIntensity}})</h3>
+              <p> {{currentExercise.exerciseDescription}} </p>
+              <p> Targets: {{currentExercise.exerciseTarget.exerciseTargetName}} </p>
     </mat-card>
     <br>
     <br>
@@ -51,10 +56,10 @@
         <input type="text" id="exercise-name" [(ngModel)]="exerciseName">
         <br>
         <label for="exercise-intensity">exercise intensity:</label>
-        <input type="text" id="exercise-intensity">
+        <input type="text" id="exercise-intensity" [(ngModel)]="exerciseIntensity">
         <br>
         <label for="exercise-target">select target area:</label>
-        <select name="exercise-target" id="exercise-target" [(ngModel)]="exerciseTarget">
+        <select name="exercise-target" id="exercise-target" [(ngModel)]="exerciseTargetId">
             <option value="1">arms</option>
             <option value="2">chest</option>
             <option value="3">back</option>
