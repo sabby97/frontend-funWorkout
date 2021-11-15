@@ -1,5 +1,6 @@
-<mat-accordion *ngIf="admin">
-    <mat-expansion-panel hideToggle class="admin-head">
+<mat-accordion *ngIf="adminBool">
+    <mat-expansion-panel hideToggle class="admin-body">
+
         <mat-expansion-panel-header class="admin-head">
           <mat-panel-title>
            
@@ -11,13 +12,13 @@
     <br>
     <mat-card class="exercise-div">
         <label for="exercise-name">exercise name:</label>
-        <input type="text" id="exercise-name">
+        <input type="text" id="exercise-name" [(ngModel)]="exerciseName">
         <br>
         <label for="exercise-intensity">exercise intensity:</label>
-        <input type="text" id="exercise-intensity">
+        <input type="text" id="exercise-intensity" [(ngModel)]="exerciseIntensity">
         <br>
         <label for="exercise-target">select target area:</label>
-        <select name="exercise-target" id="exercise-target">
+        <select name="exercise-target" id="exercise-target" [(ngModel)]="exerciseTarget">
             <option value="1">arms</option>
             <option value="2">chest</option>
             <option value="3">back</option>
@@ -28,9 +29,9 @@
         </select>
         <br>
         <label for="exercise-description">exercise description:</label>
-        <input type="text" id="exercise-description">
+        <input type="text" id="exercise-description" [(ngModel)]="exerciseDescription">
         <br>
-        <button mat-raised-button onclick="addExercise('exercise-name', 'exercise-intensity', 'exercise-target', 'exercise-description')" id="addExerciseButton">add exercise to database</button>
+        <button mat-raised-button (click)="addExercise()" id="addExerciseButton">add exercise to database</button>
     </mat-card>
     <br>
     <br>
@@ -38,22 +39,22 @@
         <label for="input">get exercise by ID</label>
         <input type="text" id="input">
         <br>
-        <button  mat-raised-button onclick="getExercise('input')" id= "getExerciseButton">get exercise</button>
+        <button  mat-raised-button (click)="getExercise()" id= "getExerciseButton">get exercise</button>
     </mat-card>
     <br>
     <br>
     <mat-card class="exercise-div">
         <label for="exerciseID">exercise ID</label>
-        <input type="text" id="exerciseID">
+        <input type="text" id="exerciseID" [(ngModel)]="exerciseID">
         <br>
         <label for="exercise-name">exercise name:</label>
-        <input type="text" id="exercise-name">
+        <input type="text" id="exercise-name" [(ngModel)]="exerciseName">
         <br>
         <label for="exercise-intensity">exercise intensity:</label>
         <input type="text" id="exercise-intensity">
         <br>
         <label for="exercise-target">select target area:</label>
-        <select name="exercise-target" id="exercise-target">
+        <select name="exercise-target" id="exercise-target" [(ngModel)]="exerciseTarget">
             <option value="1">arms</option>
             <option value="2">chest</option>
             <option value="3">back</option>
@@ -64,19 +65,18 @@
         </select>
         <br>
         <label for="exercise-description">exercise description:</label>
-        <input type="text" id="exercise-description">
+        <input type="text" id="exercise-description" [(ngModel)]="exerciseDescription">
         <br>
-        <button  mat-raised-button onclick="updateExercise('exerciseID','exercise-name', 'exercise-intensity', 'exercise-target', 'exercise-description')" id=
-        "updateExerciseButton">update exercise</button>
+        <button  mat-raised-button (click)="updateExercise()" id="updateExerciseButton">update exercise</button>
     </mat-card>
     <br>
     <br>
     
     <mat-card class="exercise-div">
     <label for="input">delete exercise by id</label>
-    <input type="text" id="input">
+    <input type="text" id="input" [(ngModel)]="exerciseID">
     <br>
-    <button  mat-raised-button onclick="deleteExercise('input')" id = "deleteExerciseButton">delete exercise from database</button>
+    <button  mat-raised-button (click)="deleteExercise()" id = "deleteExerciseButton">delete exercise from database</button>
     </mat-card>
     
 </mat-expansion-panel>

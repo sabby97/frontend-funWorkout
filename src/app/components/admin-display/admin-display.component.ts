@@ -15,12 +15,17 @@ export class AdminDisplayComponent implements OnInit {
   adminUser:User;
   checkAdmin:Boolean;
   admin:Admin;
-
+  adminBool: Boolean;
+  exerciseID:number;
+  exerciseName:string;
+  exerciseIntensity:number;
+  exerciseTarget:number;
+  exerciseDescription:string;
 
   constructor(private adminService:AdminService, private signInService:SignInService) 
   {
-    this.sub = signInService.notifyOfAdmin.subscribe((value) => 
-    {this.admin = value;})
+    this.sub = signInService.notifyOfAdmin.subscribe((admin) => 
+    {this.adminBool = admin.value;})
 
    }
 
@@ -28,16 +33,20 @@ export class AdminDisplayComponent implements OnInit {
    // this.adminChecker();
   }
 
+  addExercise(){
+    this.adminService.addExercise(this.exerciseName, this.exerciseIntensity, this.exerciseTarget, this.exerciseDescription);
+  }
+ 
+  getExercise(){
+    this.adminService.getExercise(this.exerciseID);
+  }
 
-  // adminChecker():void{
-  //   if(this.adminUser.isAdmin)
-  //    {this.checkAdmin=true;}
-  //    else
-  //    {this.checkAdmin=false;}
-  //    console.log(this.checkAdmin);
-  // }
-    
+  updateExercise(){
+    this.adminService.updateExercise(this.exerciseID, this.exerciseName, this.exerciseIntensity, this.exerciseTarget, this.exerciseDescription);
+  }
   
-
+  deleteExercise(){
+    this.adminService.deleteExercise(this.exerciseID);
+  }
 
 }

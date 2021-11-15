@@ -37,21 +37,21 @@ export class SignInOutComponent implements OnInit {
     if (this.username != null && this.password != null) {
         this.currentUser = await this.signInService.signIn(this.username, this.password);
     
-    if (this.currentUser.userId !== 0 && this.currentUser != null) {
+      if (this.currentUser.userId !== 0 && this.currentUser != null) {
       
-      this.signedOutToggle = false;
+        this.signedOutToggle = false;
       // this.username = "";
       // this.password = "";
       
       // Calls getWorkoutsByUser() in order to populate list of saved workouts 
       // when a user signs in
-      this.workoutPlanList.getWorkoutsByUser(this.currentUser.userId);
-      this.workoutPlanList.getRecommendedWorkouts();
+        this.workoutPlanList.getWorkoutsByUser(this.currentUser.userId);
+        this.workoutPlanList.getRecommendedWorkouts();
 
-    } else {
-      alert("There is no user with these credentials.  Please try again.");
-      this.signOut();
-    }
+      } else {
+        alert("There is no user with these credentials.  Please try again.");
+        this.signOut();
+      }
 
     } else {
       alert("Please enter a user name and password");

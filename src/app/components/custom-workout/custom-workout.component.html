@@ -1,6 +1,6 @@
 
 <mat-accordion>
-    <mat-expansion-panel hideToggle id="custom-head">
+    <mat-expansion-panel hideToggle class="custom-body">
       <mat-expansion-panel-header class="custom-head">
         <mat-panel-title>
          
@@ -9,8 +9,8 @@
             <div class="mat-title"> Create A Custom Workout</div>  
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>custom-workout works!</p>
 
+      <mat-card class="custom-box">
       <label value="workoutLengthInput"> Number of Exercises (1-15)</label>
       <input id="workoutLengthInput" type="number" [(ngModel)]="selectedWorkoutLength" min="1" max="15">
       <br>
@@ -30,12 +30,12 @@
       
       <input type="checkbox" id="warmUpCheckbox" [(ngModel)]="warmUpBoolean">
       <label for="warmUpCheckbox">Add warm up?</label><br>
-      <input type="checkbox" id="warmUpCheckbox" [(ngModel)]="coolDownBoolean">
-      <label for="warmUpCheckbox">Add cooldown?</label><br>
+      <input type="checkbox" id="coolDownCheckbox" [(ngModel)]="coolDownBoolean">
+      <label for="coolDownCheckbox">Add cooldown?</label><br>
+      </mat-card>
       
       
-      
-      <button (click)="generateCustomWorkout()"> Generate Custom Workout </button>
+      <button  mat-raised-button (click)="generateCustomWorkout()" id="createCustomWorkoutButton"> Generate Custom Workout </button>
     </mat-expansion-panel>
     <!-- <mat-expansion-panel (opened)="panelOpenState = true"
                          (closed)="panelOpenState = false">
