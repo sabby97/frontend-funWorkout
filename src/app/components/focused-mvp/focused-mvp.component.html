@@ -19,9 +19,9 @@
             
             <br>
             
-            <mat-card *ngFor="let exercise of workoutPlan.exerciseList" id="exercise-box">
+            <mat-card *ngFor="let exercise of workoutPlan.exerciseList; index as i" id="exercise-box{{i}}">
               
-              <h3> {{exercise.exerciseName}} (Intensity: {{exercise.exerciseIntensity}})</h3>
+              <h3> {{exercise.exerciseName}} (Intensity: <span id="intensitySpan{{i}}">{{exercise.exerciseIntensity}}</span>)</h3>
               <p> {{exercise.exerciseDescription}} </p>
               <p> Targets: {{exercise.exerciseTarget.exerciseTargetName}} </p>
               

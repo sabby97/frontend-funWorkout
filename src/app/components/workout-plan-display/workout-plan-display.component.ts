@@ -71,6 +71,7 @@ export class WorkoutPlanDisplayComponent implements OnInit {
 
   selectRecommendedWorkoutFromList(recommendedWorkout: WorkoutPlan) {
     this.currentWorkoutPlan = recommendedWorkout;
+    this.workoutService.currentWorkoutPlan = recommendedWorkout;
     this.workoutService.notifyOfWorkoutPlan.next(this.currentWorkoutPlan);
     console.log("Pulling " + this.currentWorkoutPlan.workoutName + " from recommended workouts");
   }

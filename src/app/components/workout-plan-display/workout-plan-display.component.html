@@ -11,7 +11,7 @@
       
       
     <mat-card>
-      <table>
+      <table id="userWorkoutTable">
 
             <div class="mat-subheading-2">Your Saved Workouts</div>
         <tr>
@@ -25,7 +25,7 @@
         </tr>
 
         <tr *ngFor="let workout of workoutPlanList; index as i">
-            <td style="text-align: center;"> <button  mat-raised-button (click)="selectWorkoutFromList(i)" id="select-button">  {{workout.workoutName}}</button></td>
+            <td style="text-align: center;"> <button  mat-raised-button (click)="selectWorkoutFromList(i)" id="select-button{{i}}">  {{workout.workoutName}}</button></td>
             <td style="text-align: center;"> <button  mat-raised-button (click)="selectWorkoutFromList(i)" id="recommended-button">  is recommended?</button></td>
             <td style="text-align: center;"> <button  mat-raised-button (click)="selectWorkoutFromList(i)" id="like-button">  likes</button></td>
             <td style="text-align: center;"> <button  mat-raised-button (click)="selectWorkoutFromList(i)" id="like-count-button">  {{workout.exerciseList.length}}</button></td> 
@@ -36,7 +36,7 @@
     <br>
 
         <mat-card>
-            <table>
+            <table id="recommendedWorkoutTable">
                   <div class="mat-subheading-2">Recommended Workouts</div>
               <tr>
                   <th>Workout Name</th>
