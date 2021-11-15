@@ -39,9 +39,12 @@ export class AdminService {
       const bodyData = {
         exerciseName:exerciseName,
         exerciseIntensity:exerciseIntensity,
-        exercisePrimaryTarget_fk:exercisePrimaryTarget_fk,
+        exerciseTarget:exercisePrimaryTarget_fk,
         exerciseDescription:exerciseDescription
       };
+
+      console.log(JSON.stringify(bodyData));
+
       console.log(exercisePrimaryTarget_fk.exerciseTargetName);
       let httpResponse = await fetch(`http://localhost:8080/exercises/`, {
           method: 'POST',
@@ -64,13 +67,13 @@ export class AdminService {
         exerciseId:exerciseID,
         exerciseName:exerciseName,
         exerciseDescription:exerciseDescription,
-        exercisePrimaryTarget_fk:exercisePrimaryTarget_fk,
+        exerciseTarget:exercisePrimaryTarget_fk,
         exerciseIntensity:exerciseIntensity
         
         
       };
       console.log(bodyData);
-      let httpResponse = await fetch(`http://localhost:8080/exercises/${exerciseID}`, {
+      let httpResponse = await fetch(`http://localhost:8080/exercises`, {
           method: 'PUT',
           headers: new Headers({'content-type': 'application/json'}),
           body: JSON.stringify(bodyData)
