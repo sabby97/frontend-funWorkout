@@ -22,6 +22,13 @@ export class AdminDisplayComponent implements OnInit {
   exerciseTarget:number;
   exerciseDescription:string;
 
+  addButtonToggle:boolean =false;
+  getButtonToggle:boolean =false;
+  updateButtonToggle:boolean =false;
+  deleteButtonToggle:boolean =false;
+
+
+
   constructor(private adminService:AdminService, private signInService:SignInService) 
   {
     this.sub = signInService.notifyOfAdmin.subscribe((admin) => 
@@ -35,18 +42,22 @@ export class AdminDisplayComponent implements OnInit {
 
   addExercise(){
     this.adminService.addExercise(this.exerciseName, this.exerciseIntensity, this.exerciseTarget, this.exerciseDescription);
+    this.addButtonToggle=true;
   }
  
   getExercise(){
     this.adminService.getExercise(this.exerciseID);
+    this.getButtonToggle=true;
   }
 
   updateExercise(){
     this.adminService.updateExercise(this.exerciseID, this.exerciseName, this.exerciseIntensity, this.exerciseTarget, this.exerciseDescription);
+    this.updateButtonToggle=true;
   }
   
   deleteExercise(){
     this.adminService.deleteExercise(this.exerciseID);
+    this.deleteButtonToggle=true;
   }
 
 }
