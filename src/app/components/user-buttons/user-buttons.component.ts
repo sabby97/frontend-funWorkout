@@ -15,11 +15,9 @@ export class UserButtonsComponent implements OnInit {
 
   deleteWorkoutBtn(){
     this.workoutService.deleteWorkout();
-    console.log("deleting a workout");
   }
   saveWorkoutBtn(){
     this.workoutService.saveWorkout();
-    console.log("saving a workout");
   }
 
 }

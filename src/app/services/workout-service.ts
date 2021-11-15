@@ -54,7 +54,7 @@ export class WorkoutService {
                 response.forEach(workoutJson => {
                     let newWorkoutPlan: WorkoutPlan = this.convertWorkoutPlanFronJson(workoutJson);
                     
-                    if(newWorkoutPlanArray.length < 6) {
+                    if(newWorkoutPlanArray.length < 15) {
                     newWorkoutPlanArray.push(newWorkoutPlan);
                     }
                 })
@@ -175,6 +175,9 @@ export class WorkoutService {
   deleteWorkout(){
     let workoutplanId : number = this.currentWorkoutPlan.workoutplanId;
 
+    console.log(workoutplanId);
+    console.log(this.currentWorkoutPlanList);
+
     let arrIndex:number = -1;
     for (let i:number = 0; i<this.currentWorkoutPlanList.length; i++){
       if(this.currentWorkoutPlan.workoutplanId == this.currentWorkoutPlanList[i].workoutplanId){
@@ -198,20 +201,29 @@ export class WorkoutService {
 
   //save a workout
   saveWorkout(){
-    this.currentWorkoutPlan.workoutplanId = null;
-    this.currentWorkoutPlan.user = this.signInService.currentUser;
-    this.currentWorkoutPlan.workoutName = this.focusedMvpComponent.saveWorkoutNameInput;
+    let savedWorkoutPlan = new WorkoutPlan;
+    savedWorkoutPlan.workoutplanId = null;
+    savedWorkoutPlan.user = this.signInService.currentUser;
+    savedWorkoutPlan.workoutName = this.focusedMvpComponent.saveWorkoutNameInput;
+    savedWorkoutPlan.exerciseList = this.currentWorkoutPlan.exerciseList;
+    savedWorkoutPlan.workoutlikes = 0;
+    savedWorkoutPlan.isRecommended = false;
+
+    //this.currentWorkoutPlan.workoutName = this.focusedMvpComponent.saveWorkoutNameInput;
     let newList:WorkoutPlan[] = this.currentWorkoutPlanList;
-    this.http.post<WorkoutPlan>(`http://localhost:8080/workouts/`, this.currentWorkoutPlan, {headers : this.postHeaders}).subscribe(
+    this.http.post<WorkoutPlan>(`http://localhost:8080/workouts/`, savedWorkoutPlan, {headers : this.postHeaders}).subscribe(
       (response) => {
+        savedWorkoutPlan.workoutplanId = response.workoutplanId;
+        //this.currentWorkoutPlan.workoutName = response.workoutName;
         this.currentWorkoutPlan.workoutplanId = response.workoutplanId;
         this.currentWorkoutPlan.isRecommended = false;
         this.currentWorkoutPlan.workoutlikes = 0;
-        newList.push(this.currentWorkoutPlan);
+        newList.push(savedWorkoutPlan);
         this.currentWorkoutPlanList = newList;
         this.notifyOfWorkoutPlan.next(this.currentWorkoutPlan);
         this.notifyOfWorkoutPlanList.next(this.currentWorkoutPlanList);
         
+        console.log(this.currentWorkoutPlanList);
       }
     );
   }

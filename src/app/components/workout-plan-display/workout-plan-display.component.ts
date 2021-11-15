@@ -52,7 +52,7 @@ export class WorkoutPlanDisplayComponent implements OnInit {
     if(localStorage.getItem('userId')) {
        
        this.workoutService.getWorkoutsByUser(localStorage.getItem('userId'));
-       
+
     } else {
       alert('You must be signed in to get saved workouts');
     }
@@ -65,13 +65,12 @@ export class WorkoutPlanDisplayComponent implements OnInit {
 
   selectWorkoutFromList(selectedIndex: number) {
     this.workoutService.selectWorkoutPlanFromList(selectedIndex);
-    console.log(this.currentWorkoutPlan);
   }
 
   selectRecommendedWorkoutFromList(recommendedWorkout: WorkoutPlan) {
     this.currentWorkoutPlan = recommendedWorkout;
+    this.workoutService.currentWorkoutPlan = recommendedWorkout;
     this.workoutService.notifyOfWorkoutPlan.next(this.currentWorkoutPlan);
-    console.log("Pulling " + this.currentWorkoutPlan.workoutName + " from recommended workouts");
   }
 
   
