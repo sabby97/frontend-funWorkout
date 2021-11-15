@@ -2,8 +2,16 @@
     background-color: rgb(58, 103, 155) !important;
 }
 
-.custom-head{
+.custom-body{
     background-color: rgb(117, 199, 247);
     margin-left: 10%;
     margin-right: 10%;
+}
+.custom-box{
+    background-color: rgb(177, 177, 177);
+}
+#createCustomWorkoutButton
+{
+    background-color: rgb(175, 112, 218);
+    margin: 10px;
 }
