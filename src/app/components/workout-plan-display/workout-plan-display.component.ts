@@ -39,6 +39,7 @@ export class WorkoutPlanDisplayComponent implements OnInit {
    recommendedWorkoutList: WorkoutPlan[];
    workoutPlanList: WorkoutPlan[];
    currentWorkoutPlan: WorkoutPlan;
+   userName: string = localStorage.getItem("userName");
 
    userId: number;
 

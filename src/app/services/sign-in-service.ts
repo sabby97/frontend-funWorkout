@@ -37,8 +37,12 @@ export class SignInService {
          localStorage.setItem('password', this.currentUser.password);
          localStorage.setItem('admin', this.currentUser.isAdmin as unknown as string);
          const newAdmin = new Admin(this.currentUser.isAdmin);
-         this.notifyOfAdmin.next(newAdmin);
-        return this.currentUser;
+         // added null check
+         if(newAdmin != null) {
+           this.notifyOfAdmin.next(newAdmin);
+         }
+           return this.currentUser;
+           
     }
 
     signOut() {
