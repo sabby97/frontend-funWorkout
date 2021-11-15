@@ -21,7 +21,7 @@
         </tr>
 
         <tr *ngFor="let workout of workoutPlanList; index as i">
-            <td style="text-align: left;"> <button  mat-raised-button (click)="selectWorkoutFromList(i)" id="select-button{{i}}">  {{workout.workoutName}}</button></td>
+            <td style="text-align: left;"> <button  mat-raised-button (click)="selectWorkoutFromList(i)" id="select-button">  {{workout.workoutName}}</button></td>
             <td style="text-align: left;"> <button  mat-raised-button (click)="selectWorkoutFromList(i)" id="like-count-button">  {{workout.exerciseList.length}}</button></td> 
         </tr>   
       </table>
@@ -38,8 +38,8 @@
                          
               </tr>
               <tr *ngFor="let workout of recommendedWorkoutList; index as i">
-                  <td style="text-align: left;"> <button color="primary" mat-raised-button (click)="selectRecommendedWorkoutFromList(workout)">  {{workout.workoutName}}</button></td>
-                  <td style="text-align: left;"> <button color="accent" mat-raised-button (click)="selectRecommendedWorkoutFromList(workout)">  {{workout.exerciseList.length}}</button></td> 
+                  <td style="text-align: left;"> <button  mat-raised-button (click)="selectRecommendedWorkoutFromList(workout)" id="recWorkout">  {{workout.workoutName}}</button></td>
+                  <td style="text-align: left;"> <button  mat-raised-button (click)="selectRecommendedWorkoutFromList(workout)" id="recLength">  {{workout.exerciseList.length}}</button></td> 
               </tr>   
             </table>
         </mat-card>
