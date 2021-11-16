@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 import { WorkoutService } from './workout-service';
 import { ExerciseTarget } from '../models/ExerciseTarget';
 
-
+//this is for an example
 @Injectable({
   providedIn: 'root'
 })
